@@ -39,7 +39,10 @@ def create_pin(pinForm):
 #Get all pins routes
 @pin_routes.route('/')
 def pins():
-     return '<h1>Pins</h1>'
+     pins = Pin.query.all()
+     # print(pins)
+     # return pins.pin_dict()
+     return {pin.id:pin.pin_dict() for pin in pins}
 
 
 #Get a single pin routes
