@@ -31,9 +31,28 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+
     def to_dict(self):
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email
         }
+
+    def public_user_dict(self):
+        return {
+            'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'username': self.username,
+            'email': self.email,
+            'profile_pic': self.profile_pic,
+            'personal': self.personal,
+            'created_at': self.created_at
+        }
+
+    pins = db.relationship(
+        "Pin",
+        back_populates="user",
+        cascade="all, delete"
+    )
