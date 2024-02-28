@@ -26,6 +26,7 @@ def email_validation(form, field):
         raise ValidationError('Email must be a valid email.')
 
 
+
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
