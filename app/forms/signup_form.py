@@ -19,12 +19,6 @@ def username_exists(form, field):
     if user:
         raise ValidationError('Username is already in use.')
 
-def email_validation(form, field):
-    # Checking the email address has @ and .
-    email = field.data
-    if '@' not in email or '.' not in email:
-        raise ValidationError('Email must be a valid email.')
-
 
 class SignUpForm(FlaskForm):
     username = StringField(
