@@ -8,12 +8,12 @@ function Navigation() {
       <div className="nav-bar">
         <div className="nav-bar-left">
           <div className="nav-bar-left-logo">
-            <NavLink to="/">
+            <NavLink to="/pin">
               <img src="/Pinterest-logo.png" alt="Logo" style={{ width: "30px" }} />
             </NavLink>
           </div>
           <div className="nav-bar-left-links">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/pin">Home</NavLink>
 
             <div
               onClick={() => window.alert("Feature coming soon")}
@@ -22,7 +22,7 @@ function Navigation() {
               Explore
             </div>
 
-            <NavLink to="/pin-create">Create</NavLink>
+            <NavLink to="/pin-creation-tool">Create</NavLink>
 
           </div>
         </div>
