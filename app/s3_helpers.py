@@ -2,9 +2,9 @@ import boto3
 import botocore
 import os
 import uuid
-from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed, FileRequired
-from wtforms import SubmitField
+# from flask_wtf import FlaskForm
+# from flask_wtf.file import FileField, FileAllowed, FileRequired
+# from wtforms import SubmitField
 
 
 s3 = boto3.client(
@@ -64,6 +64,6 @@ def remove_file_from_s3(image_url):
     return True
 
 
-class PinForm(FlaskForm):
-    pin = FileField("Pin File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-    submit = SubmitField("Create Post")
+# class PinForm(FlaskForm):
+#     pin = FileField("Pin File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+#     submit = SubmitField("Create Post")

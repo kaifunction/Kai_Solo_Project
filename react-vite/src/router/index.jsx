@@ -3,6 +3,7 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import GetPin from '../components/GetPin';
 import GetAllPins from '../components/GetAllPins/GetAllPins';
+import CreatePin from '../components/CreatePin/CreatePin';
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -27,7 +28,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "pin",
-        element: <GetAllPins/>,
+        element: <GetAllPins />,
+      },
+      {
+        path: "pin-creation-tool",
+        element: <CreatePin />
       }
     ],
   },
