@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkGetPin } from "../../redux/pin";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import DeletePin from "../DeletePin/DeletePin";
 
 const GetPin = () => {
   const { pinId } = useParams();
@@ -43,7 +45,12 @@ const GetPin = () => {
       {shouldDisplayButtons && (
         <div>
           <button onClick={toEditPage}>Edit</button>
-          <button>Delete</button>
+          <button>
+            <OpenModalMenuItem
+              itemText='Delete'
+              modalComponent={<DeletePin />}
+            />
+          </button>
         </div>
       )}
       <div>

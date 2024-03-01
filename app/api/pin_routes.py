@@ -135,7 +135,7 @@ def updata_pin(id):
 
 #Delete a pin by id
 @pin_routes.route('/<int:id>/', methods=['DELETE'])
-@login_required
+# @login_required
 def delete_pin(id):
      pin = Pin.query.get(id)
 
