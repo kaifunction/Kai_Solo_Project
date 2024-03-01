@@ -3,7 +3,7 @@ const GET_PINS = 'pins/GET_PINS';
 // Post wait AWS
 const POST_PIN = 'pins/POST_PIN';
 const EDIT_PIN = 'pins/EDIT_PIN';
-// const DELETE_PIN = 'pins/DELETE_PIN';
+const DELETE_PIN = 'pins/DELETE_PIN';
 
 
 // Action Creators
@@ -24,6 +24,11 @@ const postPin = (pin) => ({
 
 const editPin = (pin) => ({
      type: EDIT_PIN,
+     payload: pin
+})
+
+const deletePin = (pin) => ({
+     type: DELETE_PIN,
      payload: pin
 })
 
@@ -62,12 +67,6 @@ export const thunkPostPin = (pin) => async (dispatch) => {
      data.append('pin_link', pin['pin_link'])
      data.append('title', pin['title'])
      data.append('description', pin['description'])
-     // data.get("title", pin.title)
-     // console.log("pin_link FROM THE POST PIN THUNK==>", data.get('pin_link'))
-     // console.log("title FROM THE POST PIN THUNK==>", data.get('title'))
-     // console.log("description FROM THE POST PIN THUNK==>", data.get('description'))
-     // console.log("data.pin FROM THE POST PIN THUNK===>", data.pin_link)
-     // console.log("pin FROM THE POST PIN THUNK===>", pin)
 
      const response = await fetch('/api/pin/pin-creation-tool/', {
           method: 'POST',
@@ -95,11 +94,6 @@ export const thunkEditPin = (pin) => async (dispatch) => {
      formData.append('pin_link', pin['pin_link'])
      formData.append('title', pin['title'])
      formData.append('description', pin['description'])
-     // console.log("PIN FROM THUNK", pin)
-
-     console.log("pin_link FROM THE POST PIN THUNK==>", formData.get('pin_link'))
-     console.log("title FROM THE POST PIN THUNK==>", formData.get('title'))
-     console.log("description FROM THE POST PIN THUNK==>", formData.get('description'))
 
      const response = await fetch (`/api/pin/${pinId}/edit/`, {
           method: 'POST',
@@ -118,6 +112,24 @@ export const thunkEditPin = (pin) => async (dispatch) => {
           }
      }
 
+}
+
+// Delete a pin
+export const thunkDeletePin = (pinId) => async (dispatch) => {
+     const response = await fetch(`/api/pin/${pinId}`, {
+          method: 'DELETE',
+     })
+
+     if (response.ok) {
+          const delete_pin = await response.json()
+          dispatch(deletePin(delete_pin))
+          return delete_pin;
+     } else {
+          const data = await response.json();
+          if(data.errors){
+               return data
+          }
+     }
 }
 
 
@@ -149,6 +161,11 @@ const pinReducer = (state=initialState, action) => {
                     pin: action.payload
                };
 
+          case DELETE_PIN:
+               newState = { ...state }
+               newState.pins = { ...state.pins };
+               delete newState.pins[action.pinId];
+               return newState;
 
           default:
                return state;

@@ -26,7 +26,7 @@ function EditPin() {
     }
   }
 //   console.log("file FROM EP", file)
-  console.log("pinLink FROM EP", pinLink)
+//   console.log("pinLink FROM EP", pinLink)
 
   function validate() {
      const tempValidation = {};
@@ -51,8 +51,8 @@ function EditPin() {
     }
   }, [pin]);
 
-//   useEffect(() => {
-//     dispatch(thunkEditPin(pinId, pin));
+//   useEffect(() => {  :)
+//     dispatch(thunkEditPin(pinId, pin));  :-) ^.^, OwO, ;u; ;-; UoU
 //   }, [dispatch, pinId, pin]);
 
   if (!pin) return null;
