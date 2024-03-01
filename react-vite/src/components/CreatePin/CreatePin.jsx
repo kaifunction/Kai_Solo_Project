@@ -76,7 +76,8 @@ function CreatePin() {
     e.preventDefault();
     setTitle("");
     setDescription("");
-    setFile("");
+    setPinLink("")
+    setFile("No Image");
   }
 
 
@@ -87,7 +88,7 @@ function CreatePin() {
       </div>
       <div>
         <div className="create-pin-upload-pinLink">
-          <img src={pinLink} alt="Pin Image Here" style={{ width: "400px" }} />
+          <img src={pinLink} alt="Pin Image Here" style={{ width: "300px", height: "400px" }} />
           {file == "No Image" && (
             <input type="file" accept="image/*" name="pin_link" onChange={onImageChange} />
           )}

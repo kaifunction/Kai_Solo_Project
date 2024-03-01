@@ -63,11 +63,11 @@ export const thunkPostPin = (pin) => async (dispatch) => {
      data.append('title', pin['title'])
      data.append('description', pin['description'])
      // data.get("title", pin.title)
-     console.log("pin_link FROM THE POST PIN THUNK==>", data.get('pin_link'))
-     console.log("title FROM THE POST PIN THUNK==>", data.get('title'))
-     console.log("description FROM THE POST PIN THUNK==>", data.get('description'))
+     // console.log("pin_link FROM THE POST PIN THUNK==>", data.get('pin_link'))
+     // console.log("title FROM THE POST PIN THUNK==>", data.get('title'))
+     // console.log("description FROM THE POST PIN THUNK==>", data.get('description'))
      // console.log("data.pin FROM THE POST PIN THUNK===>", data.pin_link)
-     console.log("pin FROM THE POST PIN THUNK===>", pin)
+     // console.log("pin FROM THE POST PIN THUNK===>", pin)
 
      const response = await fetch('/api/pin/pin-creation-tool/', {
           method: 'POST',
@@ -88,12 +88,37 @@ export const thunkPostPin = (pin) => async (dispatch) => {
 }
 
 // Edit a pin
-// export const thunkEditPin = (pin) => async (dispatch) => {
-//      const pinId = pin.id;
-//      const formData = new FormData();
-//      for (let key of Object.keys())
+export const thunkEditPin = (pin) => async (dispatch) => {
+     const { pinId, title, description, pin_link } = pin
+     // console.log("PINID FROM THUNK", pinId)
+     const formData = new FormData();
+     formData.append('pin_link', pin['pin_link'])
+     formData.append('title', pin['title'])
+     formData.append('description', pin['description'])
+     // console.log("PIN FROM THUNK", pin)
 
-// }
+     console.log("pin_link FROM THE POST PIN THUNK==>", formData.get('pin_link'))
+     console.log("title FROM THE POST PIN THUNK==>", formData.get('title'))
+     console.log("description FROM THE POST PIN THUNK==>", formData.get('description'))
+
+     const response = await fetch (`/api/pin/${pinId}/edit/`, {
+          method: 'POST',
+          body: formData
+     })
+     console.log("response FROM EDIT THUNK", response)
+
+     if (response.ok){
+          const edit_pin = await response.json()
+          dispatch(editPin(edit_pin))
+          return edit_pin
+     } else {
+          const data = await response.json();
+          if(data.errors){
+               return data
+          }
+     }
+
+}
 
 
 
@@ -117,6 +142,13 @@ const pinReducer = (state=initialState, action) => {
                newState = { ...state }
                newState.pins = { ...state.pins, [action.payload.id]: action.payload };
                return newState;
+
+          case EDIT_PIN:
+               return {
+                    ...state,
+                    pin: action.payload
+               };
+
 
           default:
                return state;
