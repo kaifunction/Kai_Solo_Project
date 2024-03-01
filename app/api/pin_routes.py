@@ -88,7 +88,7 @@ def create_pin_route():
 
 
 #Edit a pin by pin id
-@pin_routes.route('/<int:id>/', methods=["POST"])
+@pin_routes.route('/<int:id>/edit/', methods=["POST"])
 @login_required
 def updata_pin(id):
      pin = Pin.query.get(id)
@@ -98,18 +98,39 @@ def updata_pin(id):
 
      updated_pin = PinForm()
      updated_pin['csrf_token'].data = request.cookies['csrf_token']
+     #=======> <========#
      print('updated pin is: ', updated_pin)
-
      if updated_pin.validate_on_submit():
-          pin.title = updated_pin.title.data
-          pin.description = updated_pin.description.data
-          pin.pin_link = updated_pin.pin_link.data
+          pin_link = updated_pin.data['pin_link']
+          pin_link.filename = get_unique_filename(pin_link.filename)
+          upload = upload_file_to_s3(pin_link)
 
-          db.session.add(pin)
+          if 'url' not in upload:
+               return render_template("post_form.html", form=updated_pin, errors=[upload])
+          url = ''
+          if upload:
+               url = upload['url']
+
+          pin.title = updated_pin.data['title']
+          pin.pin_link = url
+          pin.description = updated_pin.data['description']
+          # new_pin = Pin(
+          #      user=current_user,
+          #      title=updated_pin.data['title'],
+          #      pin_link=url,
+          #      description=updated_pin.data['description']
+          # )
+
+     # if updated_pin.validate_on_submit():
+     #      pin.title = updated_pin.title.data
+     #      pin.description = updated_pin.description.data
+     #      pin.pin_link = updated_pin.pin_link.data
+
+          # db.session.add(new_pin)
           db.session.commit()
 
-          return pin.pin_dict()
-     return {'errors': updated_pin.errors}, 403
+          return jsonify(pin.pin_dict()), 201
+     return jsonify({'errors': updated_pin.errors}), 403
 
 
 #Delete a pin by id
