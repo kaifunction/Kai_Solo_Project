@@ -90,6 +90,11 @@ function EditPin() {
      await navigate(`/pin/${pinId}`)
   };
 
+  function backToPin(e) {
+     e.preventDefault();
+     navigate(`/pin/${pinId}`)
+  }
+
   function clearForm(e) {
     e.preventDefault();
     setTitle(pin.title);
@@ -99,9 +104,11 @@ function EditPin() {
   }
 
   return (
+     <>
+     <button onClick={backToPin} >Back</button>
     <form onSubmit={onSubmit} className="edit-pin-container">
       <div>
-        <h1>Updata a new Pin</h1>
+        <h1>Update a new Pin</h1>
       </div>
       <div>
         <div className="edit-pin-upload-pinLink">
@@ -155,6 +162,7 @@ function EditPin() {
         </div>
       </div>
     </form>
+    </>
   );
 }
 
