@@ -53,6 +53,11 @@ class User(db.Model, UserMixin):
 
     pins = db.relationship(
         "Pin",
-        back_populates="user",
-        cascade="all, delete"
+        back_populates="user"
+    )
+
+
+    comments_user = db.relationship(
+        "Comment",
+        back_populates="user_comment"
     )
