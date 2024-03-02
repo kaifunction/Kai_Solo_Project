@@ -147,3 +147,11 @@ def delete_pin(id):
 
 
      return {'Message': 'Successfully Deleted'}
+
+
+# Commnets routes
+# Get all comments by a pin
+# @pin_routes.route('/<int:id>/comments/')
+# @login_required
+# def get_comments():
+#      comments = Pin.
