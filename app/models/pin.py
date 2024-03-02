@@ -34,3 +34,8 @@ class Pin(db.Model):
           "User",
           back_populates="pins"
      )
+
+     comments_pin = db.relationship(
+         'Comment',
+         back_populates='pin',
+     )
