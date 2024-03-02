@@ -25,17 +25,18 @@ class Pin(db.Model):
                'description': self.description,
                'user_id': self.user_id,
                'created_at': self.created_at,
-               'user': self.user.public_user_dict()
+               'user': self.user.public_user_dict(),
+               'comments': [comment.comment_dict() for comment in self.comments]
           }
 
 
-
+     #下面的 变量名出就是与其它table建立连接的桥梁，也是在上面的pin_dict中要使用的名称 比如user， comments。
      user = db.relationship(
           "User",
           back_populates="pins"
      )
 
-     comments_pin = db.relationship(
+     comments = db.relationship(
          'Comment',
          back_populates='pin',
      )

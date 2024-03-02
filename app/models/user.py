@@ -57,7 +57,7 @@ class User(db.Model, UserMixin):
     )
 
 
-    comments_user = db.relationship(
+    comments = db.relationship(
         "Comment",
-        back_populates="user_comment"
+        back_populates="user"
     )
