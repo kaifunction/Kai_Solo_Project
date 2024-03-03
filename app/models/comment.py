@@ -17,14 +17,13 @@ class Comment(db.Model):
 
      pin = db.relationship(
           'Pin',
-          back_populates='comments',
-          cascade="all, delete"
+          back_populates='comments'
      )
 
      user = db.relationship(
           'User',
           back_populates='comments',
-          cascade="all, delete"
+          # cascade="all, delete"
      )
 
      #下面的comment_dict中要使用的名称也 比如user， pin。 变量名出就是与其它table建立连接的桥梁，正如上面使用的pin 和 user的变量名字。

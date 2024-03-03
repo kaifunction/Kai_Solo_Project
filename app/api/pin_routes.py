@@ -1,9 +1,9 @@
 from flask import Blueprint, request, render_template, jsonify
-from app.models import db, User, Pin
+from app.models import db, User, Pin, Comment
 from flask_login import login_required, current_user
 from datetime import datetime
 from app.s3_helpers import upload_file_to_s3, remove_file_from_s3, get_unique_filename
-from app.forms import PinForm
+from app.forms import PinForm, CommentForm
 
 
 pin_routes = Blueprint('pin', __name__)
@@ -150,8 +150,58 @@ def delete_pin(id):
 
 
 # Commnets routes
-# Get all comments by a pin
-# @pin_routes.route('/<int:id>/comments/')
-# @login_required
-# def get_comments():
-#      comments = Pin.
+# Post a comment by pin Id
+@pin_routes.route('/<int:id>/comments/', methods=['POST'])
+@login_required
+def post_pin_comment(id):
+     print('ID=================>', id)
+
+     form = CommentForm()
+     form['csrf_token'].data = request.cookies['csrf_token']
+
+     if form.validate_on_submit():
+          comment = Comment(
+               comment = form.data['comment'],
+               user_id = current_user.id,
+               pin_id = id,
+               created_at = datetime.utcnow(),
+               updated_at = datetime.utcnow()
+          )
+          if comment.comment is not None:
+               db.session.add(comment)
+               db.session.commit()
+               return comment.comment_dict()
+          else:
+               return {'Errors': 'Unable to create commnet.'}
+     else:
+          return jsonify({'Errors': 'Form validation failed.'})
+
+
+# Edit a comment
+@pin_routes.route('/<int:id>/comments/<int:c_id>/', methods=['POST'])
+@login_required
+def edit_pin_comment(_id, c_id):
+     comment = Comment.query.get(c_id)
+     form = CommentForm()
+
+     if form.validate_on_submit() and comment.user_id == current_user.id:
+          comment.comment = form.data['comment']
+          comment.updated_at = datetime.utcnow()
+          db.session.add(comment)
+          db.session.commit()
+          return comment.comment_dict()
+     else:
+          return {'Error': 'Could not edit comment.'}
+
+
+
+# Delete a comment from the pin
+@pin_routes.route('/<int:id>/comments/<int:c_id>/', methods=['DELETE'])
+@login_required
+def delete_pin_comment(_id, c_id):
+     comment = Comment.query.get(c_id)
+     if not comment:
+          return {'Error': 'Cannot find comment'}
+     db.session.delete(comment)
+     db.session.commit()
+     return {'message': 'Deleted successful'}
