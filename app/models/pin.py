@@ -37,6 +37,7 @@ class Pin(db.Model):
      )
 
      comments = db.relationship(
-         'Comment',
-         back_populates='pin',
+          'Comment',
+          back_populates='pin',
+          cascade="all, delete"
      )

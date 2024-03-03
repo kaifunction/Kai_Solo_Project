@@ -5,6 +5,10 @@ const POST_PIN = 'pins/POST_PIN';
 const EDIT_PIN = 'pins/EDIT_PIN';
 const DELETE_PIN = 'pins/DELETE_PIN';
 
+const POST_COMMENT = 'pins/POST_COMMENT';
+// const EDIT_COMMENT = 'pins/EDIT_COMMENT';
+// const DELETE_COMMENT = 'pins/DELETE_COMMENT';
+
 
 // Action Creators
 const getPin = (pin) => ({
@@ -30,6 +34,12 @@ const editPin = (pin) => ({
 const deletePin = (pin) => ({
      type: DELETE_PIN,
      payload: pin
+})
+
+
+const postComment = (comment) => ({
+     type: POST_COMMENT,
+     payload: comment
 })
 
 
@@ -133,6 +143,29 @@ export const thunkDeletePin = (pinId) => async (dispatch) => {
 }
 
 
+export const thunkPostComment = (pinId, comment) => async (dispatch) => {
+     console.log('COMMENT FROM THUNK====>', comment)
+     const response = await fetch(`/api/pin/${pinId}/comments/`, {
+          method: 'POST',
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(comment)
+     })
+     // console.log("RESPONSE FROM THUNK ====>", response)
+
+     if (response.ok) {
+          const post_comment = await response.json()
+          console.log('POST COMMENT FROM THUNK===>', post_comment)
+          dispatch(postComment(post_comment))
+          return post_comment
+     } else {
+          const data = await response.json();
+          if(data.errors){
+               return data
+          }
+     }
+}
+
+
 
 const initialState = { pins: {} }
 
@@ -166,6 +199,11 @@ const pinReducer = (state=initialState, action) => {
                newState.pins = { ...state.pins };
                delete newState.pins[action.pinId];
                return newState;
+
+          case POST_COMMENT:
+               newState = { ...state }
+               newState.pins = { ...state.pins, [action.payload.id]: action.payload }
+               return newState
 
           default:
                return state;

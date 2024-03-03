@@ -88,7 +88,7 @@ function EditPin() {
      }
 
      await navigate(`/pin/${pinId}`)
-  };
+  }
 
   function backToPin(e) {
      e.preventDefault();
