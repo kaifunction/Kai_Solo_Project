@@ -14,7 +14,7 @@ const DeletePin = () => {
   const deletePin = async (e) => {
     e.preventDefault();
     await dispatch(thunkDeletePin(pinId));
-    navigate("/pin");
+    await navigate("/pin");
     closeModal();
   };
 
