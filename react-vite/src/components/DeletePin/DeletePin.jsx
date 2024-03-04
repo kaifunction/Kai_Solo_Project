@@ -27,9 +27,9 @@ const DeletePin = () => {
     <>
       <form className="DeleteForm">
         <h1>Confirm Delete</h1>
-        <h3>Are you sure you want to delete this Song?</h3>
-        <button onClick={deletePin}>Yes (Delete Song)</button>
-        <button onClick={keepPin}>No (Keep Song)</button>
+        <h3>Are you sure you want to delete this Pin?</h3>
+        <button onClick={deletePin}>Yes (Delete Pin)</button>
+        <button onClick={keepPin}>No (Keep Pin)</button>
       </form>
     </>
   );
