@@ -56,6 +56,7 @@ const GetPin = () => {
     console.log("RESPONSE FROM EDIT COMMENT BACK====>", response);
     dispatch(editComment(response));
     setCommentId(-1);
+    setIsEditing(false);
     closeModal();
   };
 
