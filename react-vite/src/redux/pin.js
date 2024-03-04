@@ -6,7 +6,7 @@ const EDIT_PIN = 'pins/EDIT_PIN';
 const DELETE_PIN = 'pins/DELETE_PIN';
 
 const POST_COMMENT = 'pins/POST_COMMENT';
-// const EDIT_COMMENT = 'pins/EDIT_COMMENT';
+const EDIT_COMMENT = 'pins/EDIT_COMMENT';
 // const DELETE_COMMENT = 'pins/DELETE_COMMENT';
 
 
@@ -42,6 +42,10 @@ const postComment = (comment) => ({
      payload: comment
 })
 
+export const editComment = (comment) => ({
+     type: EDIT_COMMENT,
+     payload: comment
+})
 
 
 // Thunks
@@ -142,7 +146,7 @@ export const thunkDeletePin = (pinId) => async (dispatch) => {
      }
 }
 
-
+// Post a Comment
 export const thunkPostComment = (pinId, comment) => async (dispatch) => {
      console.log('COMMENT FROM THUNK====>', comment)
      const response = await fetch(`/api/pin/${pinId}/comments/`, {
@@ -165,6 +169,29 @@ export const thunkPostComment = (pinId, comment) => async (dispatch) => {
      }
 }
 
+
+// Edit a Comment
+export const thunkEditComment = (pinId, comment) => async (dispatch) => {
+     console.log('PINID, COMMENT FROM THUNK===>', pinId, comment)
+     const response = await fetch(`/api/pin/${pinId}/comments/${comment.id}/`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(comment)
+     })
+     console.log('RESPONSE FROM THUNK====>', response)
+
+     if(response.ok) {
+          const edit_comment = await response.json()
+          dispatch(editComment(edit_comment))
+          console.log("EDIT_COMMENT FROM THUNK====>", edit_comment)
+          return edit_comment
+     } else {
+          const data = await response.json();
+          if(data.errors){
+               return data
+          }
+     }
+}
 
 
 const initialState = { pins: {} }
@@ -202,8 +229,17 @@ const pinReducer = (state=initialState, action) => {
 
           case POST_COMMENT:
                newState = { ...state }
-               newState.pins = { ...state.pins, [action.payload.id]: action.payload }
-               return newState
+               newState.pins = { ...state.pins, [action.payload.id]: action.payload };
+               return newState;
+
+          case EDIT_COMMENT:
+               newState = { ...state, pins: { ...state.pins } }; // 创建新对象以确保不直接修改原始 state
+               const editedComment = action.payload;
+
+               // 找到被编辑的评论并更新
+               newState.pins[editedComment.pin_id].comments = newState.pins[editedComment.pin_id].comments.map(comment =>
+               comment.id === editedComment.id ? { ...comment, comment: editedComment.comment } : comment);
+               return newState;
 
           default:
                return state;

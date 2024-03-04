@@ -178,19 +178,33 @@ def post_pin_comment(id):
 
 
 # Edit a comment
-@pin_routes.route('/<int:id>/comments/<int:c_id>/', methods=['POST'])
+@pin_routes.route('/<int:_id>/comments/<int:c_id>/', methods=['POST'])
 @login_required
 def edit_pin_comment(_id, c_id):
      comment = Comment.query.get(c_id)
+     # print("COMMENT ID FROM PIN ROUTE======>", comment.comment_dict())
      form = CommentForm()
+     form['csrf_token'].data = request.cookies['csrf_token']
+     # print("COMMENTFORM FROM PIN ROUTE======>", form)
+     # print("REQUEST JSON FROM PIN ROUTE======>", request.json)
 
      if form.validate_on_submit() and comment.user_id == current_user.id:
-          comment.comment = form.data['comment']
+          # comment.comment = form.data['comment']
+          # comment.updated_at = datetime.utcnow()
+          # print("AFTER COMMENT ID FROM PIN ROUTE======>", comment.comment_dict())
+          # db.session.add(comment)
+
+          data = request.json
+          edited_comment = data.get('comment')
+          # print("EDITED_COMMENT FROM PIN ROUTE======>", edited_comment)
+          comment.comment = edited_comment
           comment.updated_at = datetime.utcnow()
-          db.session.add(comment)
+
           db.session.commit()
           return comment.comment_dict()
      else:
+          #============>这个print很重要 <=============#
+          # print("FORM VALIDATION ERRORS:", form.errors)
           return {'Error': 'Could not edit comment.'}
 
 
