@@ -7,7 +7,7 @@ const DELETE_PIN = 'pins/DELETE_PIN';
 
 const POST_COMMENT = 'pins/POST_COMMENT';
 const EDIT_COMMENT = 'pins/EDIT_COMMENT';
-// const DELETE_COMMENT = 'pins/DELETE_COMMENT';
+const DELETE_COMMENT = 'pins/DELETE_COMMENT';
 
 
 // Action Creators
@@ -45,6 +45,11 @@ const postComment = (comment) => ({
 export const editComment = (comment) => ({
      type: EDIT_COMMENT,
      payload: comment
+})
+
+const deleteComment = (commentId) => ({
+     type: DELETE_COMMENT,
+     payload: commentId
 })
 
 
@@ -172,19 +177,40 @@ export const thunkPostComment = (pinId, comment) => async (dispatch) => {
 
 // Edit a Comment
 export const thunkEditComment = (pinId, comment) => async (dispatch) => {
-     console.log('PINID, COMMENT FROM THUNK===>', pinId, comment)
+     // console.log('PINID, COMMENT FROM THUNK===>', pinId, comment)
      const response = await fetch(`/api/pin/${pinId}/comments/${comment.id}/`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(comment)
      })
-     console.log('RESPONSE FROM THUNK====>', response)
+     // console.log('RESPONSE FROM THUNK====>', response)
 
      if(response.ok) {
           const edit_comment = await response.json()
           dispatch(editComment(edit_comment))
           console.log("EDIT_COMMENT FROM THUNK====>", edit_comment)
           return edit_comment
+     } else {
+          const data = await response.json();
+          if(data.errors){
+               return data
+          }
+     }
+}
+
+// Delete a comment
+export const thunkDeleteComment = (pinId, commentId) => async (dispatch) => {
+     console.log('PINID, COMMENTId FROM THUNK===>', pinId, commentId)
+     const response = await fetch(`/api/pin/${pinId}/comments/${commentId}/`, {
+          method: 'DELETE'
+     })
+     console.log('RESPONSE FROM DELETE THUNK====>', response)
+
+     if (response.ok){
+          const delete_comment = await response.json()
+          dispatch(deleteComment(delete_comment))
+          console.log("DELETE_COMMENT FROM THUNK====>", delete_comment)
+          // return delete_comment;
      } else {
           const data = await response.json();
           if(data.errors){
@@ -240,6 +266,11 @@ const pinReducer = (state=initialState, action) => {
                newState.pins[editedComment.pin_id].comments = newState.pins[editedComment.pin_id].comments.map(comment =>
                comment.id === editedComment.id ? { ...comment, comment: editedComment.comment } : comment);
                return newState;
+
+          case DELETE_COMMENT:
+               newState = { ...state };
+               delete newState.pins[action.payload];
+               return newState
 
           default:
                return state;
