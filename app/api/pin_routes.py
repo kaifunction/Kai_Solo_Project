@@ -210,10 +210,11 @@ def edit_pin_comment(_id, c_id):
 
 
 # Delete a comment from the pin
-@pin_routes.route('/<int:id>/comments/<int:c_id>/', methods=['DELETE'])
+@pin_routes.route('/<int:_id>/comments/<int:c_id>/', methods=['DELETE'])
 @login_required
 def delete_pin_comment(_id, c_id):
      comment = Comment.query.get(c_id)
+     # print("COMMENT ID FROM PIN ROUTE======>", comment.comment_dict())
      if not comment:
           return {'Error': 'Cannot find comment'}
      db.session.delete(comment)

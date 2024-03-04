@@ -5,11 +5,12 @@ import {
   thunkEditComment,
   thunkGetPin,
   thunkPostComment,
-  editComment,
+  editComment
 } from "../../redux/pin";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import DeletePin from "../DeletePin/DeletePin";
 import { useModal } from "../../context/Modal";
+import DeleteComment from "../DeleteComment/DeleteComment";
 
 const GetPin = () => {
   const { pinId } = useParams();
@@ -32,7 +33,7 @@ const GetPin = () => {
 
   const pin = useSelector((state) => state.pins.pins[pinId]);
   if (!pin) return null;
-  const userId = pin.user.id;
+  const userId = pin.user?.id;
   const currentUserId = currentUser?.id;
   const pinImage = pin.pin_link;
 
@@ -40,6 +41,7 @@ const GetPin = () => {
   const shouldDisplayButtons = currentUserId && userId === currentUserId;
 
   const pinComments = pin.comments;
+
 
   function toEditPage(e) {
     e.preventDefault();
@@ -70,6 +72,9 @@ const GetPin = () => {
   };
 
   // Delete Comment button
+  // const handleDeleteButtonClick = (commentId) => {
+
+  // }
 
   // Back button
   const backToPin = (e) => {
@@ -85,8 +90,8 @@ const GetPin = () => {
     e.preventDefault();
     setErrors([]);
     const errors = [];
-    if (comment?.length > 255)
-      errors.push("Comment needs to be less than 255 characters.");
+    if (comment?.length > 255 || comment?.length <= 0)
+      errors.push("Comment needs to be less than 255 characters or more than 1 character.");
 
     if (errors?.length > 0) {
       setErrors(errors);
@@ -175,6 +180,7 @@ const GetPin = () => {
               <button onClick={() => toEditComment(commentId, commentText)}>
                 Submit
               </button>
+              {errors.errors && errors.errors.map((error, i) => <div key={i}>{error}</div>)}
             </>
           )}
 
@@ -194,11 +200,11 @@ const GetPin = () => {
                         Edit Comment
                       </button>
                       <button>
-                        Delete Comment
-                        {/* <OpenModalMenuItem
-                          itemText='Delete'
-                          modalComponent={<DeletePin />}
-                        /> */}
+                        {/* Delete Comment */}
+                        <OpenModalMenuItem
+                          itemText='Delete Comment'
+                          modalComponent={<DeleteComment commentId={comment?.id}/>}
+                        />
                       </button>
                       <button onClick={backToPin}> Back </button>
                     </div>
