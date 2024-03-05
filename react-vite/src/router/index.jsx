@@ -6,6 +6,7 @@ import GetAllPins from '../components/GetAllPins/GetAllPins';
 import CreatePin from '../components/CreatePin/CreatePin';
 import EditPin from '../components/EditPin/EditPin';
 import Layout from './Layout';
+import HomePage from '../components/HomePage/HomePage';
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1></h1>,
+        element: <HomePage />,
       },
       {
         path: "login",
