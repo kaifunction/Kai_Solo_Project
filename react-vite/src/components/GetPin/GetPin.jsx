@@ -68,7 +68,7 @@ const GetPin = () => {
     setCommentText(comment.comment);
     setIsEditing(true);
 
-    console.log("COMMENTID======>", comment.id);
+    // console.log("COMMENTID======>", comment.id);
   };
 
   // Delete Comment button
@@ -191,10 +191,10 @@ const GetPin = () => {
                 <p>• &nbsp;&nbsp;{comment.comment}</p>
                 <p>
                   &nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;&nbsp;---
-                  {comment.user.username}
+                  {comment.user?.username}
                 </p>
                 <div className="getPin-edit-delete-buttons">
-                  {managementButton && comment.user.id === currentUserId && (
+                  {managementButton && comment.user?.id === currentUserId && (
                     <div>
                       <button onClick={() => handleEditButtonClick(comment)}>
                         Edit Comment

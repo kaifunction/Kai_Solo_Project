@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
@@ -39,10 +39,12 @@ function ProfileButton() {
     closeMenu();
   };
 
+  const userFirstLetter = user?.username[0]?.toUpperCase()
+
   return (
     <>
-      <button onClick={toggleMenu}>
-        <FaUserCircle />
+      <button onClick={toggleMenu} className="login-signup-button">
+        {userFirstLetter? userFirstLetter : <FaUser style={{color:'#d3f712'}}/>}
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
