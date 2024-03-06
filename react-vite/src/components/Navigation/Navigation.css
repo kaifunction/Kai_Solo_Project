@@ -83,8 +83,143 @@ nav {
   border-radius: 20px;
   font-size: 18px;
   font-weight: bold;
+  color: #d3f712;
   background-color: #ff00bb;
   border-color: #ff00bb;
   border-block-style: none;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.login-signup-button:hover{
+  transform: scale(1.15);
+  color: #ff00bb;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.profile-dropdown{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dropdown button{
+  padding: 5px;
+  width: 100px;
+  font-weight: 700;
+  border-radius: 20px;
+  border-color: #ff00bb;
+  background-color: #ff00bb;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-dropdown button:hover{
+  transform: scale(1.15);
+  color: #d3f712;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+
+.nav-bar-arrow{
+  position: fixed;
+  right: 160px;
+  bottom: 50px;
+  font-size: 50px;
+  color: #d3f712;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-bar-arrow:hover{
+  transform: scale(1.15);
+  font-size: 60px;
+  color: #000000;
+}
+
+.nav-bar-arrow2{
+  position: fixed;
+  right: 200px;
+  bottom: 50px;
+  font-size: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-bar-arrow2:hover{
+  transform: scale(1.15);
+  font-size: 60px;
+  color: #d3f712;
+}
+
+.nav-bar-arrow3{
+  position: fixed;
+  right: 240px;
+  bottom: 50px;
+  font-size: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-bar-arrow3:hover{
+  transform: scale(1.15);
+  font-size: 60px;
+  color: #d3f712;
+}
+.nav-bar-arrow4{
+  position: fixed;
+  right: 280px;
+  bottom: 50px;
+  font-size: 50px;
+  color: #d3f712;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-bar-arrow4:hover{
+  transform: scale(1.15);
+  font-size: 60px;
+  color: #000000;
+}
+.nav-bar-arrow5{
+  position: fixed;
+  right: 320px;
+  bottom: 50px;
+  font-size: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-bar-arrow5:hover{
+  transform: scale(1.15);
+  font-size: 60px;
+  color: #d3f712;
+}
+.nav-bar-arrow6{
+  position: fixed;
+  right: 360px;
+  bottom: 50px;
+  font-size: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-bar-arrow6:hover{
+  transform: scale(1.15);
+  font-size: 60px;
+  color: #d3f712;
+}
+.nav-bar-arrow7{
+  position: fixed;
+  right: 120px;
+  bottom: 50px;
+  font-size: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-bar-arrow7:hover{
+  transform: scale(1.15);
+  font-size: 60px;
+  color: #d3f712;
+}
+.nav-bar-arrow8{
+  position: fixed;
+  right: 80px;
+  bottom: 50px;
+  font-size: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-bar-arrow8:hover{
+  transform: scale(1.15);
+  font-size: 60px;
+  color: #d3f712;
 }

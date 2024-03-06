@@ -66,7 +66,7 @@ def create_pin_route():
           pin_link = form.data['pin_link']
           pin_link.filename = get_unique_filename(pin_link.filename)
           upload = upload_file_to_s3(pin_link)
-          print(upload)
+          print("================>", upload)
 
           if 'url' not in upload:
                return render_template("post_form.html", form=form, errors=[upload])
