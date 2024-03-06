@@ -124,6 +124,11 @@ const GetPin = () => {
     setIsManagementButtonVisible(false);
   };
 
+  // console.log("PINCOMMENT=====>", pin?.comments.find(comment => comment.user.username === currentUser?.username))
+  // console.log("PINCOMMENT2=====>", currentUser?.username)
+  const manganmentButtonshow = pin?.comments.find(comment => comment.user.username === currentUser?.username)
+  // console.log(typeof manganmentButtonshow)
+
   return (
     <div className="getPin-container">
       <div className="getPin-left">
@@ -168,7 +173,7 @@ const GetPin = () => {
       <div className="getPin-comment-container">
         <h4 className="getPin-text-h4" style={{marginTop:'0px'}}>Add Comment: </h4>
         <div>
-          <form onSubmit={handleSubmit} className="pin-comment-input">
+          {currentUser ? (<form onSubmit={handleSubmit} className="pin-comment-input">
             <textarea
               placeholder="Write a comment for the pin..."
               type="text"
@@ -188,7 +193,9 @@ const GetPin = () => {
               }}
               className="getPin-edit-delete-button"
             />
-          </form>
+          </form>) : <p style={{margin:'0', fontSize:'12px', color:'#ff00bb'}}>
+            Please Log in or sign up first...
+            </p>}
         </div>
 
         <div className="getPin-comment">
@@ -240,7 +247,7 @@ const GetPin = () => {
               </div>
             ))}
             {/* {console.log('COMMENT MANAGE===>', pinComments)} */}
-            {(pinComments.length !== 0 && isManagementButtonVisible) && (
+            {(manganmentButtonshow && pinComments.length !== 0 && isManagementButtonVisible) && (
             <button onClick={handleManagementButtonClick} className="getPin-edit-delete-button">
               Manage Comment
             </button>

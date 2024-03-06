@@ -5,6 +5,7 @@
      width: 100%;
 }
 
+
 .edit-pin-left{
      width: 30%;
 }
@@ -86,5 +87,11 @@
 .edit-pin-label{
      display: flex;
      flex-direction: column;
+     gap: 10px;
+}
+
+.edit-pin-button-container{
+     display: flex;
+     flex-direction: row;
      gap: 10px;
 }
