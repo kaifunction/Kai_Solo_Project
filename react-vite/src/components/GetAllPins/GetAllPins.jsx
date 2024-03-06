@@ -10,11 +10,21 @@ const GetAllPins = () => {
   const allPins = useSelector((state) => state.pins.pins);
   const allPinsArray = Object.values(allPins);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   // console.log("allPinsArray===>", allPinsArray)
 
   useEffect(() => {
     dispatch(thunkGetPins());
   }, [dispatch]);
+
+  useEffect(()=>{
+     const asyncLoad = () => {
+          setTimeout(() => {
+               setIsLoading(false)
+          }, 2000)
+     }
+     asyncLoad();
+  },[])
 
   const handleScroll = () => {
      if (window.scrollY > 200) {
@@ -38,27 +48,32 @@ const GetAllPins = () => {
    }, []);
 
   return (
-    <div
-      className="allPins-container"
-      // style={{display: "flex", flexDirection:"row", width:"100%", flexWrap:"wrap", gap:"20px"}}
-    >
-      {showScrollButton && (
-        <button className="scrollToTopButton" onClick={handleScrollToTop}>
-          Back to Top
-        </button>
-      )}
-      {allPinsArray.map((pin) => (
-        <div key={pin.id} className="allPins-eachpin">
-          <NavLink key={pin.id} to={`/pin/${pin.id}/`}>
-            <img
-              src={pin.pin_link}
-              //   style={{width:"200px", height:"300px"}}
-            />
-            <div className="pinTitle">{pin.title}</div>
-          </NavLink>
-        </div>
-      ))}
-    </div>
+     <>
+          {isLoading ? (<h1  className="loading-spinner">Loading...</h1>
+          ) : (
+          <div
+            className="allPins-container"
+            // style={{display: "flex", flexDirection:"row", width:"100%", flexWrap:"wrap", gap:"20px"}}
+          >
+            {showScrollButton && (
+              <button className="scrollToTopButton" onClick={handleScrollToTop}>
+                Back to Top
+              </button>
+            )}
+            {allPinsArray.map((pin) => (
+              <div key={pin.id} className="allPins-eachpin">
+                <NavLink key={pin.id} to={`/pin/${pin.id}/`}>
+                  <img
+                    src={pin.pin_link}
+                    //   style={{width:"200px", height:"300px"}}
+                  />
+                  <div className="pinTitle">{pin.title}</div>
+                </NavLink>
+              </div>
+            ))}
+          </div>)}
+
+     </>
   );
   //   const breakpointColumnsObj = {
   //     default: 5, // 默认列数
