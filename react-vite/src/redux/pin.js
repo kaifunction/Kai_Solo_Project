@@ -91,7 +91,7 @@ export const thunkPostPin = (pin) => async (dispatch) => {
           method: 'POST',
           body: data
      })
-     console.log("RESPONSE FROM THUNK===>", response)
+     // console.log("RESPONSE FROM THUNK===>", response)
 
      if (response.ok) {
           const new_pin = await response.json();

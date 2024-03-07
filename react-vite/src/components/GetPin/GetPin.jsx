@@ -100,7 +100,7 @@ const GetPin = () => {
 
       if (errors?.length > 0) {
         setErrors(errors);
-        const error = errors[0]
+        // const error = errors[0]
         // console.log("ERRORS1======>", error)
         return;
     }

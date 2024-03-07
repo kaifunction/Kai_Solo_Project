@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 135px;
+  height: 260%;;
   justify-content: space-between;
 }
 /* #ff2f00 */
@@ -49,9 +49,9 @@ nav {
 .nav-bar-left-links{
     display: flex;
     flex-direction: row;
-    gap: 60px;
+    gap: 20px;
     padding: 35px 40px;
-    font-size: 24px;
+    font-size: 22px;
 }
 .nav-bar-button{
   background-color: #ff00bb00;
@@ -68,9 +68,10 @@ nav {
 
 .search-bar{
   width: 600px;
+  max-width: 1600px;
   height: 40px;
   margin-top: 45px;
-  margin-left: 100px;
+  margin-left: 10%;
   border-radius: 10px;
   border-block-width: 0px;
   border-color: #ffffff00;
@@ -83,7 +84,7 @@ nav {
   display: flex;
   flex-direction: row;
   padding-top: 50px;
-  padding-right: 130px;
+  padding-right: 5%;
 }
 
 .login-signup-button{
@@ -138,7 +139,7 @@ nav {
 
 .nav-bar-arrow{
   position: fixed;
-  right: 160px;
+  right: 5%;
   bottom: 50px;
   font-size: 50px;
   color: #ff2f00;

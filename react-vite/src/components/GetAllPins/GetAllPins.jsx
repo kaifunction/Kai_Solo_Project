@@ -21,7 +21,7 @@ const GetAllPins = () => {
      const asyncLoad = () => {
           setTimeout(() => {
                setIsLoading(false)
-          }, 2000)
+          }, 3000)
      }
      asyncLoad();
   },[])
