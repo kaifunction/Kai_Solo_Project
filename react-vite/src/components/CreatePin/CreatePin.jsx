@@ -17,7 +17,7 @@ function CreatePin() {
   const [file, setFile] = useState("No Image");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const currentUser = useSelector((state) => state.session.user)
+  const currentUser = useSelector((state) => state.session?.user)
   // console.log("CURRENTUSER====>",currentUser)
 
   function onImageChange(e) {
