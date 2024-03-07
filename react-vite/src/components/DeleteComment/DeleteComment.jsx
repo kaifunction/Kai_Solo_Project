@@ -34,7 +34,7 @@ const DeleteComment = ({ commentId }) => {
           <button onClick={handleDeleteButtonClick}>
             Yes (Delete Comment)
           </button>
-          <button onClick={keepPin}>No (Keep Comment)</button>
+          <button onClick={keepPin}  style={{color:'#000000',backgroundColor:'#ff2f0080', borderColor:'#ff2f0040'}}>No (Keep Comment)</button>
         </div>
       </div>
     </form>

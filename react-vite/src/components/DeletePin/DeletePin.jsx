@@ -33,7 +33,7 @@ const DeletePin = () => {
         </div>
         <div className="delete-button">
           <button onClick={deletePin}>Yes (Delete Pin)</button>
-          <button onClick={keepPin}>No (Keep Pin)</button>
+          <button onClick={keepPin} style={{color:'#000000',backgroundColor:'#ff2f0080', borderColor:'#ff2f0040'}}>No (Keep Pin)</button>
         </div>
       </div>
     </form>
