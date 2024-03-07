@@ -15,7 +15,7 @@
      align-items: center;
      margin: 0;
      background-color: #d3f712;
-     width: 200%;
+     width: 150%;
      /* padding: 5px 10px; */
      font-weight: 650;
      /* border-radius: 10px; */
@@ -62,4 +62,14 @@
    .signUp-bottom label{
      display: flex;
      flex-direction: column;
+   }
+
+   .signUp-input{
+     width: 250px;
+     height: 30px;
+     color: #000000;
+     background-color: #d3f71220;
+     border-color: #00000080;
+     /* padding: 10px; */
+     /* border-color: #ff00bb20; */
    }

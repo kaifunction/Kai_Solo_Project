@@ -54,6 +54,7 @@ function SignupFormModal() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="signUp-input"
           />
         </label>
         {errors.email && <p style={{ margin: "0", fontSize: "12px", color: "#ff00bb" }}>{errors.email}</p>}
@@ -64,6 +65,7 @@ function SignupFormModal() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            className="signUp-input"
           />
         </label>
         {errors.username && <p style={{ margin: "0", fontSize: "12px", color: "#ff00bb" }}>{errors.username}</p>}
@@ -74,6 +76,7 @@ function SignupFormModal() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="signUp-input"
           />
         </label>
         {errors.password && <p style={{ margin: "0", fontSize: "12px", color: "#ff00bb" }}>{errors.password}</p>}
@@ -84,6 +87,7 @@ function SignupFormModal() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            className="signUp-input"
           />
         </label>
         {errors.confirmPassword && <p style={{ margin: "0", fontSize: "12px", color: "#ff00bb" }}>{errors.confirmPassword}</p>}
