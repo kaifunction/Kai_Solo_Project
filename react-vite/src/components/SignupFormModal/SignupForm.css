@@ -5,7 +5,7 @@
      align-items: center;
      padding: 80px 200px;
      gap: 20px;
-     background-color: #d3f71260;
+     background-color: #ff2f0010;
 }
 
 .signUp-top{
@@ -14,12 +14,12 @@
      justify-content: center;
      align-items: center;
      margin: 0;
-     background-color: #d3f712;
+     background-color: #000000;
      width: 150%;
      /* padding: 5px 10px; */
      font-weight: 650;
      /* border-radius: 10px; */
-     color: #000000;
+     color: #ff2f00;
      border-bottom-left-radius: 20px;
      border-top-right-radius: 20px;
 }
@@ -45,16 +45,16 @@
      width: 100px;
      font-weight: 700;
      border-radius: 20px;
-     color: #d3f712;
-     border-color: #ff00bb;
-     background-color: #ff00bb;
+     color: #000000;
+     border-color: #ff2f00;
+     background-color: #ff2f00;
      cursor: pointer;
      transition: transform 0.3s ease-in-out;
    }
 
    .signUp-bottom button:hover{
      transform: scale(1.15);
-     color: #d3f712;
+     color: #ff2f00;
      background-color: #000000;
      border-color: #000000;
    }
@@ -68,7 +68,7 @@
      width: 250px;
      height: 30px;
      color: #000000;
-     background-color: #d3f71220;
+     background-color: #ff2f0020;
      border-color: #00000080;
      /* padding: 10px; */
      /* border-color: #ff00bb20; */

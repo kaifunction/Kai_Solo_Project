@@ -207,6 +207,7 @@ const GetPin = () => {
                   placeholder="Edit your comment..."
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
+                  style={{ width: "500px", height: "40px", color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px' }}
                 />
               </div>
               <button onClick={() => toEditComment(commentId, commentText)} className="getPin-edit-delete-button">

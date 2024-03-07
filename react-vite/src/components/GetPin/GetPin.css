@@ -43,16 +43,16 @@
      border-radius: 10px;
      font-size: 15px;
      font-weight: bold;
-     color: #ff00bb;
-     background-color: #d3f71260;
-     border-color: #d3f71240;
+     color: #00000080;
+     background-color: #ff2f0060;
+     border-color: #ff2f0040;
      border-block-style: none;
      cursor: pointer;
      transition: transform 0.3s ease-in-out;
 }
 .getPin-image button:hover{
      transform: scale(1.15);
-     color: #d3f712;
+     color: #ff2f00;
      background-color: #000000;
      border-color: #000000;
    }
@@ -63,9 +63,9 @@
      border-radius: 10px;
      font-size: 15px;
      font-weight: bold;
-     color: #ff00bb;
-     background-color: #d3f712;
-     border-color: #d3f712;
+     color: #d3f712;
+     background-color: #ff2f00;
+     border-color: #ff2f00;
      border-block-style: none;
      cursor: pointer;
      transition: transform 0.3s ease-in-out;
@@ -73,7 +73,7 @@
 
 .getPin-edit-delete-button:hover{
      transform: scale(1.15);
-     color: #d3f712;
+     color: #ff2f00;
      background-color: #000000;
      border-color: #000000;
    }

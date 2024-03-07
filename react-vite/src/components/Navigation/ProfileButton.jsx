@@ -44,14 +44,14 @@ function ProfileButton() {
   return (
     <>
       <button onClick={toggleMenu} className="login-signup-button">
-        {userFirstLetter? userFirstLetter : <FaUser style={{color:'#d3f712'}}/>}
+        {userFirstLetter? userFirstLetter : <FaUser style={{color:'#000000'}}/>}
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} style={{paddingTop:'20px'}} ref={ulRef}>
           {user ? (
             <>
-              <h3>{user.username}</h3>
-              <h3>{user.email}</h3>
+              <h3 style={{color:'#ff2f00'}}>{user.username}</h3>
+              <h3 style={{color:'#ff2f00', paddingBottom:'10px'}}>{user.email}</h3>
               <button onClick={logout} >Log Out</button>
             </>
           ) : (
