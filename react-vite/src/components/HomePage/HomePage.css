@@ -42,27 +42,29 @@ html {
 .black-box{
      width: 1310px;
      height: 27px;
-     background-color: #d3f712;
+     background-color: #ff2f00;
+     border-top-left-radius: 20px;
+     border-bottom-left-radius: 20px;
      position: relative;
      top: -635px;
      left: 430px;
 }
 
 .black-box-1{
-     width: 33px;
+     width: 32px;
     height: 27px;
     background-color: #ffffff;
     position: relative;
     top: -662px;
-    left: 569px;
+    left: 572px;
 }
 
 .black-box-2{
-     width: 33px;
-     height: 27px;
+     width: 32px;
+     height: 29px;
      background-color: #ffffff;
      position: relative;
-     top: -688px;
+     top: -690px;
      left: 751px;
 }
 
@@ -71,7 +73,7 @@ html {
      right: 160px;
      bottom: 50px;
      font-size: 50px;
-     color: #d3f712;
+     color: #ff2f00;
      transition: transform 0.3s ease-in-out;
 }
 .nav-bar-arrow:hover{
@@ -90,7 +92,7 @@ html {
 .nav-bar-arrow2:hover{
      transform: scale(1.15);
      font-size: 60px;
-     color: #d3f712;
+     color: #ff2f00;
 }
 
 .nav-bar-arrow3{
@@ -103,14 +105,14 @@ html {
 .nav-bar-arrow3:hover{
      transform: scale(1.15);
      font-size: 60px;
-     color: #d3f712;
+     color: #ff2f00;
 }
 .nav-bar-arrow4{
      position: fixed;
      right: 280px;
      bottom: 50px;
      font-size: 50px;
-     color: #d3f712;
+     color: #ff2f00;
      transition: transform 0.3s ease-in-out;
 }
 .nav-bar-arrow4:hover{
@@ -128,7 +130,7 @@ html {
 .nav-bar-arrow5:hover{
      transform: scale(1.15);
      font-size: 60px;
-     color: #d3f712;
+     color: #ff2f00;
 }
 .nav-bar-arrow6{
      position: fixed;
@@ -140,7 +142,7 @@ html {
 .nav-bar-arrow6:hover{
      transform: scale(1.15);
      font-size: 60px;
-     color: #d3f712;
+     color: #ff2f00;
 }
 .nav-bar-arrow7{
      position: fixed;
@@ -152,7 +154,7 @@ html {
 .nav-bar-arrow7:hover{
      transform: scale(1.15);
      font-size: 60px;
-     color: #d3f712;
+     color: #ff2f00;
 }
 .nav-bar-arrow8{
      position: fixed;
@@ -164,7 +166,7 @@ html {
 .nav-bar-arrow8:hover{
      transform: scale(1.15);
      font-size: 60px;
-     color: #d3f712;
+     color: #ff2f00;
 }
 
 /* .black-box-small{

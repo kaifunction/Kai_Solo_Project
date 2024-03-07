@@ -48,9 +48,9 @@
      border-radius: 10px;
      font-size: 15px;
      font-weight: bold;
-     color: #ff00bb;
-     background-color: #d3f712;
-     border-color: #d3f712;
+     color: #d3f712;
+     background-color: #ff2f00;
+     border-color: #ff2f00;
      border-block-style: none;
      cursor: pointer;
      transition: transform 0.3s ease-in-out;
@@ -58,7 +58,7 @@
 
 .editPin-button:hover{
      transform: scale(1.15);
-     color: #d3f712;
+     color: #ff2f00;
      background-color: #000000;
      border-color: #000000;
    }
@@ -78,7 +78,7 @@
      background-color: #000000;
      border-radius: 20px;
      padding: 23px;
-     color: #d3f712;
+     color: #ff2f00;
      font-weight: 700;
      width: 65%;
      margin-bottom: 20px;
