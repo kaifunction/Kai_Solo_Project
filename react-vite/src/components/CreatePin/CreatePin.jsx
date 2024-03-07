@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { thunkPostPin } from "../../redux/pin";
+import "./CreatePin.css";
 
 function CreatePin() {
   const dispatch = useDispatch();
@@ -13,14 +14,16 @@ function CreatePin() {
   // const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const [pinLink, setPinLink] = useState();
-  const [file, setFile] = useState("No Image")
+  const [file, setFile] = useState("No Image");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const currentUser = useSelector((state) => state.session.user)
+  // console.log("CURRENTUSER====>",currentUser)
 
   function onImageChange(e) {
     if (e.target.files && e.target.files[0]) {
-      setPinLink(URL.createObjectURL(e.target.files[0]))
-      setFile(e.target.files[0])
+      setPinLink(URL.createObjectURL(e.target.files[0]));
+      setFile(e.target.files[0]);
     }
   }
 
@@ -35,13 +38,6 @@ function CreatePin() {
     return true;
   }
 
-  // if(!newPin) return null
-  // console.log("newPin===>", newPin)
-  // const keys = Object.keys(newPin)
-  // const newPinId = keys.length > 0 ? keys.pop() : null;
-  // console.log(newPinId)
-
-
   async function onSubmit(e) {
     e.preventDefault();
     setDisabled(false);
@@ -54,7 +50,7 @@ function CreatePin() {
     const payload = {
       title,
       pin_link: file,
-      description
+      description,
     };
     // console.log("file====>", file)
 
@@ -66,7 +62,7 @@ function CreatePin() {
       return;
     }
     // console.log("pinID====>", response.id)
-    const newPinId = response.id
+    const newPinId = response.id;
     // if (newPinId !== null) {
     await navigate(`/pin/${newPinId}`);
     // }
@@ -76,59 +72,84 @@ function CreatePin() {
     e.preventDefault();
     setTitle("");
     setDescription("");
-    setPinLink("")
+    setPinLink("");
     setFile("No Image");
   }
 
-
   return (
-    <form onSubmit={onSubmit} className="create-pin-container">
-      <div>
-        <h1>Create a new Pin</h1>
-      </div>
-      <div>
-        <div className="create-pin-upload-pinLink">
-          <img src={pinLink} alt="Pin Image Here" style={{ width: "300px", height: "400px" }} />
-          {file == "No Image" && (
-            <input type="file" accept="image/*" name="pin_link" onChange={onImageChange} />
-          )}
-          {validation.file && <p>{validation.file}</p>}
+    <div>
+    {currentUser ? (<form onSubmit={onSubmit}  className="createPin-container">
+      <div className="createPin-left">
+        <div>
+          <h1>Create a new Pin</h1>
         </div>
-        <div className="create-pin-data">
-          {errors.errors &&
-            errors.errors.map((error, i) => <div key={i}>{error}</div>)}
-
-          <label>
-            Title
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+          <div className="create-pin-upload-pinLink">
+            <img
+              src={pinLink}
+              alt="Pin Image Here"
+              style={{ width: "300px", height: "400px", color:'#ff00bb' }}
+              className="createPin-image"
             />
-            {validation.title && <p>{validation.title}</p>}
-          </label>
-
-          <label>
-            Description
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            {validation.description && <p>{validation.description}</p>}
-          </label>
-
-          <div className="create-pin-button-container">
-            <button type="cancel" onClick={clearForm}>
-              Cancel
-            </button>
-
-            <button type="submit" disabled={disabled}>
-              Submit
-            </button>
+            {file == "No Image" && (
+              <input
+                type="file"
+                accept="image/*"
+                name="pin_link"
+                onChange={onImageChange}
+                className="createPin-choose-file"
+              />
+            )}
+            {validation.file && <p>{validation.file}</p>}
           </div>
-        </div>
+
+          <div className="createPin-data">
+            {errors.errors &&
+              errors.errors.map((error, i) => <div key={i} style={{ margin: "0", fontSize: "12px", color: "#ff00bb" }}>{error}</div>)}
+          </div>
       </div>
-    </form>
+      <div className="createPin-right">
+            <label>
+              <h4 className="createPin-text-h4">Title:</h4>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                style={{width:'400px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px'}}
+              />
+              {validation.title && <p style={{
+                    marginTop: "10px",
+                    fontSize: "12px",
+                    color: "#ff00bb",
+                  }}>{validation.title}</p>}
+            </label>
+
+            <label>
+            <h4 className="createPin-text-h4">Description:</h4>
+
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                style={{width:'400px', height: '100px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px'}}
+              />
+              {validation.description && <p style={{
+                    marginTop: "10px",
+                    fontSize: "12px",
+                    color: "#ff00bb",
+                  }}>{validation.description}</p>}
+            </label>
+
+            <div className="createPin-button-container">
+              <button type="cancel" onClick={clearForm} className="createPin-button">
+                Cancel
+              </button>
+
+              <button type="submit" disabled={disabled} className="createPin-button">
+                Submit
+              </button>
+            </div>
+          </div>
+    </form>) : <h3 style={{padding: '100px 40px', color:'#ff00bb', fontWeight:'normal', fontSize:'24px'}}>Please Log in or Sign up first...</h3>}
+    </div>
   );
 }
 

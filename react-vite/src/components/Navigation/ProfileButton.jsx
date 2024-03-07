@@ -47,7 +47,7 @@ function ProfileButton() {
         {userFirstLetter? userFirstLetter : <FaUser style={{color:'#d3f712'}}/>}
       </button>
       {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
+        <ul className={"profile-dropdown"} style={{paddingTop:'20px'}} ref={ulRef}>
           {user ? (
             <>
               <h3>{user.username}</h3>
@@ -55,18 +55,24 @@ function ProfileButton() {
               <button onClick={logout} >Log Out</button>
             </>
           ) : (
-            <>
+            <div className="logIn-signUp">
+              <button style={{display:'flex', flexDirection:'row', justifyContent: 'center'}}>
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
+
+              </button>
+              <button style={{display:'flex', flexDirection:'row', justifyContent: 'center'}}>
               <OpenModalMenuItem
                 itemText="Sign Up"
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
-            </>
+
+              </button>
+            </div>
           )}
         </ul>
       )}
