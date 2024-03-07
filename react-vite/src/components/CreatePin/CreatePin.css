@@ -67,10 +67,11 @@
      display: flex;
      flex-direction: row;
      gap: 10px;
-     background-color: #000000;
+     background-color: #d3f71220;
+     border:2px solid #ff2f0020;
      border-radius: 20px;
      padding: 23px;
-     color: #d3f712;
+     color: #ff2f00;
      font-weight: 700;
      width: 100%;
      margin-bottom: 20px;

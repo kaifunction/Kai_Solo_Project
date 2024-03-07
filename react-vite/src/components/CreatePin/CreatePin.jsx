@@ -86,7 +86,7 @@ function CreatePin() {
           <div className="create-pin-upload-pinLink">
             <img
               src={pinLink}
-              alt="Pin Image Here"
+              alt="Drop you file here..."
               style={{ width: "300px", height: "400px", color:'#ff00bb' }}
               className="createPin-image"
             />
@@ -97,7 +97,8 @@ function CreatePin() {
                 name="pin_link"
                 onChange={onImageChange}
                 className="createPin-choose-file"
-              />
+                style={{width:'400px', height:'305px'}}
+                />
             )}
             {validation.file && <p>{validation.file}</p>}
           </div>
