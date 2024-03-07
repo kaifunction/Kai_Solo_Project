@@ -1,5 +1,12 @@
 .profile-dropdown {
   position: absolute;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dropdown h3{
+  margin: 5px;
 }
 
 .nav-bar{
@@ -109,6 +116,7 @@ nav {
   width: 100px;
   font-weight: 700;
   border-radius: 20px;
+  color: #d3f712;
   border-color: #ff00bb;
   background-color: #ff00bb;
   cursor: pointer;
@@ -222,4 +230,16 @@ nav {
   transform: scale(1.15);
   font-size: 60px;
   color: #d3f712;
+}
+
+
+.logIn-signUp{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-right: 70px;
+  font-size: large;
+  font-weight: 700;
+  /* border:1px solid #000000; */
+  padding: 10px;
 }
