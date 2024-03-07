@@ -10,7 +10,7 @@ function Navigation() {
         <div className="nav-bar-left">
           <div className="nav-bar-left-logo">
             <NavLink to="/">
-              <img src="/Pinterest-logo.png" alt="Logo" style={{ width: "30px" }} />
+              <img src="/VibiVisionlogoRed-White.png" alt="Logo" style={{ width: "50px", height:'45px' }} />
             </NavLink>
           </div>
           <div className="nav-bar-left-links">
