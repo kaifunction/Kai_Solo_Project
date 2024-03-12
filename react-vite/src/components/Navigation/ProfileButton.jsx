@@ -42,8 +42,8 @@ function ProfileButton() {
   const userFirstLetter = user?.username[0]?.toUpperCase()
 
   return (
-    <>
-      <button onClick={toggleMenu} className="login-signup-button">
+    <div onClick={toggleMenu}>
+      <button className="login-signup-button">
         {userFirstLetter? userFirstLetter : <FaUser style={{color:'#000000'}}/>}
       </button>
       {showMenu && (
@@ -52,31 +52,26 @@ function ProfileButton() {
             <>
               <h3 style={{color:'#ff2f00'}}>{user.username}</h3>
               <h3 style={{color:'#ff2f00', paddingBottom:'10px'}}>{user.email}</h3>
-              <button onClick={logout} >Log Out</button>
+              <button onClick={logout} style={{pointerEvents:'all'}}>Log Out</button>
             </>
           ) : (
             <div className="logIn-signUp">
-              <button style={{display:'flex', flexDirection:'row', justifyContent: 'center'}}>
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
 
-              </button>
-              <button style={{display:'flex', flexDirection:'row', justifyContent: 'center'}}>
               <OpenModalMenuItem
                 itemText="Sign Up"
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
-
-              </button>
             </div>
           )}
         </ul>
       )}
-    </>
+    </div>
   );
 }
 
