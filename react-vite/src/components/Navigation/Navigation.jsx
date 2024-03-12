@@ -33,16 +33,6 @@ function Navigation() {
             <ProfileButton />
         </div>
       </div>
-      {/* <div>
-          <IoIosArrowForward className='nav-bar-arrow8'/>
-          <IoIosArrowForward className='nav-bar-arrow7'/>
-          <IoIosArrowForward className='nav-bar-arrow'/>
-          <IoIosArrowForward className='nav-bar-arrow2'/>
-          <IoIosArrowForward className='nav-bar-arrow3'/>
-          <IoIosArrowForward className='nav-bar-arrow4'/>
-          <IoIosArrowForward className='nav-bar-arrow5'/>
-          <IoIosArrowForward className='nav-bar-arrow6'/>
-        </div> */}
     </nav>
   );
 }
