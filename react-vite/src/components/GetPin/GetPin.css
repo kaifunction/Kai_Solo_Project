@@ -99,6 +99,8 @@
 .getPin-edit-delete-comment{
      display: flex;
      flex-direction: row;
+     align-items: center;
+     /* justify-content: center; */
      gap: 10px;
 }
 
@@ -109,11 +111,12 @@
 
 
 .getPin-edit{
-     width: 180px;
+     width: 140px;
+     height: 30px;
 }
 
 
 .getPin-delete{
      padding-left: 20px;
-     width: 180px;
+     width: 0px;
 }

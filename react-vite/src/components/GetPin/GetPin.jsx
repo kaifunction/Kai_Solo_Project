@@ -149,7 +149,7 @@ const GetPin = () => {
         </div>
         <div className="getPin-image">
           <img src={pinImage} alt="Pin image" style={{ width: "300px" }} />
-          <button style={{width: '120px', padding:'5px',  transform: 'rotate(90deg)'}}>
+          <button style={{width: '0px', height:'0px', marginLeft:'65px',  transform: 'rotate(90deg)', opacity:'0.7', backgroundColor:'white'}}>
           <OpenModalMenuItem
             itemText="PIN DETAILS"
             modalComponent={<PinModal pinImage={pinImage} />}
@@ -161,7 +161,7 @@ const GetPin = () => {
           <div style={{display:'flex', gap:'20px', height: '40px', alignItems: 'center'}}>
             <h4 className="getPin-text-h4"> Manage Pin:</h4>
             <button onClick={toEditPage}  className="getPin-edit-delete-button">Edit</button>
-            <button  className="getPin-edit-delete-button">
+            <button  className="getPin-edit-delete-button" style={{width:'10px', height:'40px', backgroundColor:'white', border:'none'}}>
               <OpenModalMenuItem
                 itemText="Delete"
                 modalComponent={<DeletePin />}
@@ -233,7 +233,7 @@ const GetPin = () => {
                       <button onClick={() => handleEditButtonClick(comment)} className="getPin-edit-delete-button getPin-edit">
                         Edit Comment
                       </button>
-                      <button className="getPin-edit-delete-button getPin-delete">
+                      <button className="getPin-edit-delete-button getPin-delete" style={{width:'10px', height:'40px', backgroundColor:'white', border:'none'}}>
                         {/* Delete Comment */}
                         <OpenModalMenuItem
                           itemText="Delete Comment"
