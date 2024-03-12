@@ -97,6 +97,7 @@ nav {
   background-color: #ff2f00;
   border-color: #ff2f00;
   border-block-style: none;
+  pointer-events: all;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
@@ -125,11 +126,37 @@ nav {
   color: #d3f712;
   border-color: #ff2f00;
   background-color: #ff2f00;
+  pointer-events: all;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
 
 .profile-dropdown button:hover{
+  transform: scale(1.15);
+  color: #000000;
+  background-color: #d3f712;
+  border-color: #d3f712;
+}
+
+.modal-button{
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  width: 100px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 20px;
+  color: #d3f712;
+  border-color: #ff2f00;
+  background-color: #ff2f00;
+  pointer-events: all;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal-button:hover{
   transform: scale(1.15);
   color: #000000;
   background-color: #d3f712;
@@ -249,3 +276,7 @@ nav {
   /* border:1px solid #000000; */
   padding: 0 10px;
 }
+
+/* .logIn-signUp button{
+  pointer-events: all;
+} */
