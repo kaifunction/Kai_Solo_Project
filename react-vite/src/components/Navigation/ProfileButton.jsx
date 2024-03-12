@@ -1,15 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUser } from 'react-icons/fa';
+import { FaUser } from "react-icons/fa";
 import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { NavLink } from "react-router-dom";
 
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
+  // const userId = user?.id;
+  // console.log("USERID FROM PROFILE BUTTON=====>", userId)
   const ulRef = useRef();
 
   const toggleMenu = (e) => {
@@ -39,20 +42,40 @@ function ProfileButton() {
     closeMenu();
   };
 
-  const userFirstLetter = user?.username[0]?.toUpperCase()
+  const userFirstLetter = user?.username[0]?.toUpperCase();
 
   return (
     <div onClick={toggleMenu}>
       <button className="login-signup-button">
-        {userFirstLetter? userFirstLetter : <FaUser style={{color:'#000000'}}/>}
+        {userFirstLetter ? (
+          userFirstLetter
+        ) : (
+          <FaUser style={{ color: "#000000" }} />
+        )}
       </button>
       {showMenu && (
-        <ul className={"profile-dropdown"} style={{paddingTop:'20px'}} ref={ulRef}>
+        <ul
+          className={"profile-dropdown"}
+          style={{ paddingTop: "20px" }}
+          ref={ulRef}
+        >
           {user ? (
             <>
-              <h3 style={{color:'#ff2f00'}}>{user.username}</h3>
-              <h3 style={{color:'#ff2f00', paddingBottom:'10px'}}>{user.email}</h3>
-              <button onClick={logout} style={{pointerEvents:'all'}}>Log Out</button>
+              <h3 style={{ color: "#ff2f00" }}>{user.username}</h3>
+              <h3 style={{ color: "#ff2f00", paddingBottom: "10px" }}>
+                {user.email}
+              </h3>
+
+              <NavLink
+                to={`/current-user`}
+                style={{ textDecoration: "none", color: "#d3f712" }}
+              >
+                <button>User Profile</button>
+              </NavLink>
+
+              <button onClick={logout} style={{ pointerEvents: "all" }}>
+                Log Out
+              </button>
             </>
           ) : (
             <div className="logIn-signUp">
