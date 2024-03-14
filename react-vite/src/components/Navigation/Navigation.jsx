@@ -8,23 +8,25 @@ function Navigation() {
     <nav>
       <div className="nav-bar">
         <div className="nav-bar-left">
-          <div className="nav-bar-left-logo">
-            <NavLink to="/">
-              <img src="/VibiVisionlogoRed-White.png" alt="Logo" style={{ width: "50px", height:'45px' }} />
-            </NavLink>
-          </div>
-          <div className="nav-bar-left-links">
-            <NavLink to="/pin" className='nav-bar-button' style={{textDecoration:'none'}}>Home</NavLink>
-
-            <div className='nav-bar-button'
-              onClick={() => window.alert("Feature coming soon")}
-              style={{ cursor: "pointer" }}
-            >
-              Explore
+          <div className="nav-bar-logo-link">
+            <div className="nav-bar-left-logo">
+              <NavLink to="/">
+                <img src="/VibiVisionlogoRed-White.png" alt="Logo" className="nav-bar-left-logo" />
+              </NavLink>
             </div>
+            <div className="nav-bar-left-links">
+              <NavLink to="/pin" className='nav-bar-button' style={{textDecoration:'none'}}>Home</NavLink>
 
-            <NavLink to="/pin-creation-tool" style={{textDecoration:'none'}}><div className='nav-bar-button'>Create</div></NavLink>
+              <div className='nav-bar-button'
+                onClick={() => window.alert("Feature coming soon")}
+                style={{ cursor: "pointer" }}
+              >
+                Explore
+              </div>
 
+              <NavLink to="/pin-creation-tool" style={{textDecoration:'none'}}><div className='nav-bar-button'>Create</div></NavLink>
+
+            </div>
           </div>
         <input placeholder="Search" onClick={() => window.alert("Feature coming soon")} className="search-bar"/>
         </div>

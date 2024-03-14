@@ -14,10 +14,11 @@
 .nav-bar{
   background-color: #000000;
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 260%;;
   justify-content: space-between;
+  align-items: center; /* 垂直居中 */
+  padding: 10px; /* 调整内边距 */
+  width: 100%;
+  /* height: 260%; */
 }
 /* #ff2f00 */
 
@@ -30,7 +31,7 @@ nav {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  gap: 800px;
+  /* gap: 800px; */
 
   padding: fill;
   width: 100%;
@@ -41,18 +42,30 @@ nav {
 .nav-bar-left {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  width: 80%;
+}
+
+.nav-bar-logo-link{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
 }
 
 
 .nav-bar-left-logo{
-  padding: 50px 30px;
+  padding: 0px 30px;
+  width: 50px;
+  height: 45px;
 }
 
 .nav-bar-left-links{
     display: flex;
     flex-direction: row;
     gap: 20px;
-    padding: 35px 40px;
+    padding: 35px 120px 35px 60px;
     font-size: 22px;
 }
 .nav-bar-button{
@@ -69,23 +82,23 @@ nav {
 }
 
 .search-bar{
-  width: 600px;
-  max-width: 1600px;
+  width: 40%; /* 设置宽度为父元素宽度的80% */
+  max-width: 800px;
+  min-width: 200px; /* 设置最大宽度 */
   height: 40px;
-  margin-top: 45px;
-  margin-left: 10%;
+  /* margin-top: 45px; */
+  margin-left: auto; /* 左右居中 */
+  margin-right: auto;
   border-radius: 10px;
-  border-block-width: 0px;
-  border-color: #ffffff00;
-  cursor: text;
-  background-color:#ffffff;
+  border: none;
+  background-color: #ffffff;
+  padding: 0 10px;
 }
 
 
 .nav-bar-right{
   display: flex;
   flex-direction: row;
-  padding-top: 50px;
   padding-right: 5%;
 }
 
@@ -93,12 +106,12 @@ nav {
   width: 35px;
   height: 35px;
   border-radius: 20px;
+  margin-right: 10px;
   font-size: 18px;
   font-weight: bold;
-  /* color: #000000; */
   background-color: #ff2f00;
   border-color: #ff2f00;
-  border-block-style: none;
+  border: none;
   pointer-events: all;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
@@ -283,3 +296,49 @@ nav {
 /* .logIn-signUp button{
   pointer-events: all;
 } */
+
+
+@media screen and (max-width:1010px) {
+  .nav-bar {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    height: auto; /* 自动高度 */
+    padding-bottom: 20px; /* 调整内边距 */
+  }
+  .nav-bar-left {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    width: 80%; /* 充满父容器宽度 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    gap: 0px; /* 间距 */
+  }
+  .nav-bar-left-logo{
+    padding-left: 50px;
+    width: 40px;
+    height: 35px;
+  }
+
+  .nav-bar-logo-links{
+    display: flex;
+    flex-direction: row;
+    padding: 0px 0px;
+    font-size: 22px;
+  }
+
+  .nav-bar-left-links {
+    flex-direction: row; /* 垂直排列 */
+    align-items: flex-start; /* 左对齐 */
+    margin-top: 10px; /* 调整上边距 */
+  }
+
+  .search-bar {
+    margin: 10px 40px; /* 调整上边距 */
+    width: 90%; /* 充满父容器宽度 */
+  }
+
+  .nav-bar-right {
+    margin-top: 10px; /* 调整上边距 */
+  }
+
+}
