@@ -1,131 +1,62 @@
-# Flask React Project
+# VibeVision
 
-This is the starter for the Flask React project.
+Vibevision is a partial clone of the website 'Pinterest', an image-sharing and social media platform that I like to describe as 'a digital bulletin board for inspiration'. I've always admired the layout and functionality of this site. It strikes a perfect balance between simplicity and visual appeal, allowing users to easily organize and discover content in various categories.
 
-## Getting started
+The site is visually engaging without being overwhelming. It effectively uses white space and grid layouts to showcase images and content in a way that feels clean and organized. One of the standout features of Pinterest that I hope to implement in Vibevision is the ability to save, share, and curate content into personalized pins, making it a valuable tool for collecting ideas and inspiration.
 
-1. Clone this repository (only this branch).
+While the deadline for the capstone project may be tight, I am excited about the potential to further enhance Vibevision after the deadline. I plan to add additional features such as personalized recommendations based on user preferences, interactive elements for engagement, and seamless integration with social media platforms to expand its reach and usability. I believe that with dedication and continued development, Vibevision can truly shine and become a standout project in my portfolio.
 
-2. Install dependencies.
 
-   ```bash
-   pipenv install -r requirements.txt
-   ```
+# Live Link
+https://kai-solo-project.onrender.com
 
-3. Create a __.env__ file based on the example with proper settings for your
-   development environment.
 
-4. Make sure the SQLite3 database connection URL is in the __.env__ file.
+## Tech Stack
+### Frameworks and Libraries
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention.**
+### Hosting:
+ ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
-6. Get into your pipenv, migrate your database, seed your database, and run your
-   Flask app:
 
-   ```bash
-   pipenv shell
-   ```
 
-   ```bash
-   flask db upgrade
-   ```
+# Index
 
-   ```bash
-   flask seed all
-   ```
+[Feature List](https://github.com/kaifunction/Kai_Solo_Project/wiki/MVP's-Feature-List) | [Database Schema](https://github.com/kaifunction/Kai_Solo_Project/wiki/VibeVision-DB-Schema) | [User Stories](https://github.com/kaifunction/Kai_Solo_Project/wiki/User-Stories) | [Wireframes](https://github.com/kaifunction/Kai_Solo_Project/wiki/Wireframes)
 
-   ```bash
-   flask run
-   ```
 
-7. The React frontend has no styling applied. Copy the __.css__ files from your
-   Authenticate Me project into the corresponding locations in the
-   __react-vite__ folder to give your project a unique look.
 
-8. To run the React frontend in development, `cd` into the __react-vite__
-   directory and run `npm i` to install dependencies. Next, run `npm run build`
-   to create the `dist` folder. The starter has modified the `npm run build`
-   command to include the `--watch` flag. This flag will rebuild the __dist__
-   folder whenever you change your code, keeping the production version up to
-   date.
+# Landing Page
 
-## Deployment through Render.com
 
-First, recall that Vite is a development dependency, so it will not be used in
-production. This means that you must already have the __dist__ folder located in
-the root of your __react-vite__ folder when you push to GitHub. This __dist__
-folder contains your React code and all necessary dependencies minified and
-bundled into a smaller footprint, ready to be served from your Python API.
 
-Begin deployment by running `npm run build` in your __react-vite__ folder and
-pushing any changes to GitHub.
+# Pins Page
 
-Refer to your Render.com deployment articles for more detailed instructions
-about getting started with [Render.com], creating a production database, and
-deployment debugging tips.
 
-From the Render [Dashboard], click on the "New +" button in the navigation bar,
-and click on "Web Service" to create the application that will be deployed.
 
-Select that you want to "Build and deploy from a Git repository" and click
-"Next". On the next page, find the name of the application repo you want to
-deploy and click the "Connect" button to the right of the name.
 
-Now you need to fill out the form to configure your app. Most of the setup will
-be handled by the __Dockerfile__, but you do need to fill in a few fields.
+# Endpoints
+## Auth
 
-Start by giving your application a name.
 
-Make sure the Region is set to the location closest to you, the Branch is set to
-"main", and Runtime is set to "Docker". You can leave the Root Directory field
-blank. (By default, Render will run commands from the root directory.)
+## Pins
 
-Select "Free" as your Instance Type.
 
-### Add environment variables
+## Comments
 
-In the development environment, you have been securing your environment
-variables in a __.env__ file, which has been removed from source control (i.e.,
-the file is gitignored). In this step, you will need to input the keys and
-values for the environment variables you need for production into the Render
-GUI.
 
-Add the following keys and values in the Render GUI form:
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
+# Feature List
+1. Pins
+2. Comments
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
 
-Add the following keys and values:
+# Future Implementation Goals
 
-- DATABASE_URL (copy value from the **External Database URL** field)
+1. Boards
+2. Search Bar
+3. Likes
+4. Save pins or boards
+5. Payment Accounts (Credit Cards / PayPal)
 
-**Note:** Add any other keys and values that may be present in your local
-__.env__ file. As you work to further develop your project, you may need to add
-more environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment.
-
-### Deploy
-
-Now you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your Dockerfile
-commands being executed and any errors that occur.
-
-When deployment is complete, open your deployed site and check to see that you
-have successfully deployed your Flask application to Render! You can find the
-URL for your site just below the name of the Web Service at the top of the page.
-
-**Note:** By default, Render will set Auto-Deploy for your project to true. This
-setting will cause Render to re-deploy your application every time you push to
-main, always keeping it up to date.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+# Connect
