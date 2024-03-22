@@ -59,6 +59,11 @@ nav {
   padding: 0px 30px;
   width: 50px;
   height: 45px;
+  transition: transform 0.3s ease;
+}
+
+.nav-bar-left-logo:hover{
+  transform: scale(1.1);
 }
 
 .nav-bar-left-links{

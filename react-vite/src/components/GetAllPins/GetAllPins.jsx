@@ -49,7 +49,10 @@ const GetAllPins = () => {
 
   return (
      <>
-          {isLoading ? (<h1  className="loading-spinner">Loading...</h1>
+          {isLoading ? (
+          <div>
+            <h1  className="loading-spinner">Loading...</h1>
+          </div>
           ) : (
           <div
             className="allPins-container"
