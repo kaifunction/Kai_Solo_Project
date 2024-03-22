@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import {IoIosArrowForward} from 'react-icons/io'
 import "./Navigation.css";
 
 function Navigation() {
+  const pinReducerState = useSelector((state) => state.pins);
+  console.log("pinREDUCERSTATE==========>", pinReducerState)
+  const userReducerState = useSelector((state) => state.session.user);
+
   return (
     <nav>
       <div className="nav-bar">
@@ -11,7 +16,7 @@ function Navigation() {
           <div className="nav-bar-logo-link">
             <div className="nav-bar-left-logo">
               <NavLink to="/">
-                <img src="/VibiVisionlogoRed-White.png" alt="Logo" className="nav-bar-left-logo" />
+                <img src="/Vibevision.png" alt="Logo" className="nav-bar-left-logo" />
               </NavLink>
             </div>
             <div className="nav-bar-left-links">
@@ -21,7 +26,7 @@ function Navigation() {
                 onClick={() => window.alert("Feature coming soon")}
                 style={{ cursor: "pointer" }}
               >
-                Explore
+                Boards
               </div>
 
               <NavLink to="/pin-creation-tool" style={{textDecoration:'none'}}><div className='nav-bar-button'>Create</div></NavLink>
