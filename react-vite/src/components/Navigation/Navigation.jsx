@@ -1,13 +1,16 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import {IoIosArrowForward} from 'react-icons/io'
+import { IoIosArrowForward } from "react-icons/io";
 import "./Navigation.css";
 
 function Navigation() {
   const pinReducerState = useSelector((state) => state.pins);
-  console.log("pinREDUCERSTATE==========>", pinReducerState)
+  console.log("pinREDUCERSTATE==========>", pinReducerState);
   const userReducerState = useSelector((state) => state.session.user);
+  console.log("userReducerState==========>", userReducerState);
+
+  //确保userReducerState存在
 
   return (
     <nav>
@@ -16,28 +19,50 @@ function Navigation() {
           <div className="nav-bar-logo-link">
             <div className="nav-bar-left-logo">
               <NavLink to="/">
-                <img src="/Vibevision.png" alt="Logo" className="nav-bar-left-logo" />
+                <img
+                  src="/Vibevision.png"
+                  alt="Logo"
+                  className="nav-bar-left-logo"
+                />
               </NavLink>
             </div>
             <div className="nav-bar-left-links">
-              <NavLink to="/pin" className='nav-bar-button' style={{textDecoration:'none'}}>Home</NavLink>
+              <NavLink
+                to="/pin"
+                className="nav-bar-button"
+                style={{ textDecoration: "none" }}
+              >
+                Home
+              </NavLink>
 
-              <div className='nav-bar-button'
+              <div
+                className="nav-bar-button"
                 onClick={() => window.alert("Feature coming soon")}
                 style={{ cursor: "pointer" }}
               >
                 Boards
               </div>
 
-              <NavLink to="/pin-creation-tool" style={{textDecoration:'none'}}><div className='nav-bar-button'>Create</div></NavLink>
-
+              <NavLink
+                to="/pin-creation-tool"
+                style={{ textDecoration: "none" }}
+              >
+                <div className="nav-bar-button">Create</div>
+              </NavLink>
             </div>
           </div>
-        <input placeholder="Search" onClick={() => window.alert("Feature coming soon")} className="search-bar"/>
+          <div className="nav-bar-search-bar">
+            <input
+              placeholder="Search"
+              onClick={() => window.alert("Feature coming soon")}
+              className="search-bar"
+            />
+            <button className="search-bar-button">SEARCH</button>
+          </div>
         </div>
 
         <div className="nav-bar-right">
-            <ProfileButton />
+          <ProfileButton />
         </div>
       </div>
     </nav>

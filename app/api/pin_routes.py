@@ -142,6 +142,8 @@ def delete_pin(id):
      if not pin:
           return {'errors': 'Pin not found'}, 404
 
+     remove_file_from_s3(pin.pin_link)
+
      db.session.delete(pin)
      db.session.commit()
 

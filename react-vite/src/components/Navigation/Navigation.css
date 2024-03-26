@@ -70,9 +70,10 @@ nav {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    padding: 35px 120px 35px 60px;
+    padding: 35px 40px 35px 60px;
     font-size: 22px;
 }
+
 .nav-bar-button{
   background-color: #ff00bb00;
   padding: 15px;
@@ -86,8 +87,35 @@ nav {
   background-color: #000000;
 }
 
+.nav-bar-search-bar{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.search-bar-button{
+  padding: 10px;
+  font-weight: 450;
+  font-size: 18px;
+  border-radius: 20px;
+  border:none;
+  color: #ff2f00;
+  background-color: #ff00bb00;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.search-bar-button:hover{
+  transform: scale(1.15);
+  color: #d3f712;
+  background-color: #000000;
+}
+
 .search-bar{
-  width: 40%; /* 设置宽度为父元素宽度的80% */
+  width: 70%; /* 设置宽度为父元素宽度的80% */
   max-width: 800px;
   min-width: 200px; /* 设置最大宽度 */
   height: 40px;
