@@ -2,6 +2,7 @@ import { useState } from "react";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -10,6 +11,7 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,13 +67,20 @@ function LoginFormModal() {
           )}
           <label>
             Password:
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="login-input"
-            />
+            <div className="password-input-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="login-input"
+              />
+              {showPassword ? (
+                <FaEyeSlash onClick={() => setShowPassword(false)} style={{ position: 'absolute', left: '370px' }}/>
+              ) : (
+                <FaEye onClick={() => setShowPassword(true)} style={{ position: 'absolute', left: '370px' }}/>
+              )}
+            </div>
           </label>
           {errors.password && (
             <p style={{ margin: "0", fontSize: "12px", color: "#ff00bb" }}>
