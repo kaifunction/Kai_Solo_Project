@@ -97,3 +97,16 @@
           background-color: #d3f71220;
           border-color: #00000080;
    }
+
+
+.password-input-container{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+}
+
+
+password-input-container svg{
+     position: absolute;
+     left: 370px;
+}
