@@ -5,8 +5,8 @@ from datetime import datetime
 class Board(db.Model):
      __tablename__ = 'boards'
 
-     if environment == 'production':
-          __tablename__ = {'schema': SCHEMA}
+     if environment == "production":
+          __table_args__ = {'schema': SCHEMA}
 
 
      id = db.Column(db.Integer, primary_key=True)
