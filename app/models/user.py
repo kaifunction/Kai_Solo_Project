@@ -32,6 +32,22 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
 
+
+    def toDictBoard(self):
+        return {
+            'id': self.id,
+            'username': self.username
+        }
+
+
+    def toDictLimited(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'pins': [pin.toDictLimited() for pin in self.pins],
+            'boards': [board.toDictLimited() for board in self.boards]
+        }
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -53,11 +69,20 @@ class User(db.Model, UserMixin):
 
     pins = db.relationship(
         "Pin",
-        back_populates="user"
+        back_populates="user",
+        cascade="all, delete"
     )
 
 
     comments = db.relationship(
         "Comment",
-        back_populates="user"
+        back_populates="user",
+        cascade="all, delete"
+    )
+
+
+    boards = db.relationship(
+        "Board",
+        back_populates="user",
+        cascade="all, delete"
     )
