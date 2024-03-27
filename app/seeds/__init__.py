@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .pins import pin_seed_data, undo_pin_seeds
 from .comment import comment_seed_data, undo_comment_seeds
+from .board import board_seed_data, undo_board_seeds
 
 from app.models.db import db, environment, SCHEMA
 
@@ -21,7 +22,8 @@ def seed():
         undo_users()
     all_users = seed_users()
     all_pins = pin_seed_data(all_users)
-    pin_seed_data(all_users)
+    board_seed_data(all_pins, all_users)
+    # pin_seed_data(all_users)
     comment_seed_data(all_users, all_pins)
     # Add other seed functions here
 
@@ -30,6 +32,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_comment_seeds()
+    undo_board_seeds()
     undo_pin_seeds()
     undo_users()
     # Add other undo functions here
