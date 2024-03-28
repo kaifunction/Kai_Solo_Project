@@ -158,7 +158,7 @@ function CreatePin() {
               className="createPin-image"
             /> :
             <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginBottom:'10px'}}>
-              <img src={'../../public/image-icon.png'} style={{width:'30px'}}/>
+              <img src={'https://vibevision-project.s3.us-west-1.amazonaws.com/image-icon.png'} style={{width:'30px'}}/>
               <snap style={{color:'#ff00bb'}}>&nbsp;&nbsp; Please drop you file here...</snap>
 
             </div>
