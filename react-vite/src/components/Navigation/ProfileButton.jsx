@@ -61,8 +61,8 @@ function ProfileButton() {
         >
           {user ? (
             <>
-              <h3 style={{ color: "#ff2f00" }}>{user.username}</h3>
-              <h3 style={{ color: "#ff2f00"}}>
+              <h3 style={{ color: "#d3f712", fontWeight:'500' }}>Hi, {user.username}!</h3>
+              <h3 style={{ color: "#d3f712", fontWeight:'500' }}>
                 {user.email}
               </h3>
 
