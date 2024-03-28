@@ -5,7 +5,8 @@
      align-items: center;
      padding: 40px 140px;
      gap: 20px;
-     background-color: #ff2f0010;
+     background-color: #ff2f0020;
+     background: linear-gradient(to bottom, #ff2f0020, #ffffff);
 }
 
 .login-top h1{
