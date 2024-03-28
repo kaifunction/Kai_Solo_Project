@@ -116,6 +116,7 @@ function LoginFormModal() {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="login-input"
+              style={{borderRadius:'10px'}}
             />
           </label>
           {errors.email && (
@@ -132,6 +133,7 @@ function LoginFormModal() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="login-input"
+                style={{borderRadius:'10px'}}
               />
               {showPassword ? (
                 <FaEyeSlash onClick={() => setShowPassword(false)} style={{ position: 'absolute', left: '405px' }}/>

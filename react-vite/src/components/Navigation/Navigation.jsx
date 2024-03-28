@@ -57,7 +57,7 @@ function Navigation() {
               onClick={() => window.alert("Feature coming soon")}
               className="search-bar"
             />
-            <button className="search-bar-button">SEARCH</button>
+            <button className="search-bar-button" style={{padding:'0', marginLeft:'10px'}}>SEARCH</button>
           </div>
         </div>
 

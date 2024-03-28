@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import LoginFormModal from "../LoginFormModal";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignupForm.css";
 
@@ -14,6 +16,28 @@ function SignupFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
   const [showPassword, setShowPassword] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = (e) => {
+    e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+    setShowMenu(!showMenu);
+  };
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = (e) => {
+      if (ulRef.current && !ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener("click", closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+
+  const closeMenu = () => setShowMenu(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,6 +84,7 @@ function SignupFormModal() {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="signUp-input"
+              style={{borderRadius:'10px'}}
             />
           </label>
           {errors.email && (
@@ -75,6 +100,7 @@ function SignupFormModal() {
               onChange={(e) => setUsername(e.target.value)}
               required
               className="signUp-input"
+              style={{borderRadius:'10px'}}
             />
           </label>
           {errors.username && (
@@ -91,6 +117,7 @@ function SignupFormModal() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="signUp-input"
+                style={{borderRadius:'10px'}}
               />
               {showPassword ? (
                 <FaEyeSlash
@@ -119,6 +146,7 @@ function SignupFormModal() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
                 className="signUp-input"
+                style={{borderRadius:'10px'}}
               />
               {showPassword ? (
                 <FaEyeSlash
@@ -138,7 +166,14 @@ function SignupFormModal() {
               {errors.confirmPassword}
             </p>
           )}
+      <div className="logIn-signUp" style={{display:"flex", flexDirection:"row"}}>
           <button type="submit">Sign Up</button>
+              <OpenModalMenuItem
+                itemText="Log In"
+                onItemClick={closeMenu}
+                modalComponent={<LoginFormModal />}
+              />
+       </div>
         </div>
       </form>
     </div>
