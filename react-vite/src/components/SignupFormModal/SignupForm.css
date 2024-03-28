@@ -6,6 +6,7 @@
      padding: 200px 200px 40px 200px;
      gap: 20px;
      background-color: #ff2f0010;
+     border-radius: 20px;
      background: linear-gradient(to bottom, #ff2f0020, #ffffff);
 }
 

@@ -9,3 +9,8 @@
      font-weight: weight;
      font-style: normal;
 }
+
+
+#modal-content{
+     border-radius: 20px;
+}
