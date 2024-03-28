@@ -156,7 +156,7 @@ function EditPin() {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                style={{width:'400px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px'}}
+                style={{width:'400px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px', borderRadius:'15px'}}
               />
               {validation.title && (
                 <p
@@ -176,7 +176,7 @@ function EditPin() {
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                style={{width:'400px', height: '100px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px'}}
+                style={{width:'400px', height: '100px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px', borderRadius:'15px'}}
               />
               {validation.description && (
                 <p

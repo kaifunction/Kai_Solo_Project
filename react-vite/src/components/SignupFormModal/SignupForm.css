@@ -3,9 +3,10 @@
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     padding: 80px 200px;
+     padding: 200px 200px 40px 200px;
      gap: 20px;
      background-color: #ff2f0010;
+     background: linear-gradient(to bottom, #ff2f0020, #ffffff);
 }
 
 .signUp-top{
@@ -45,7 +46,7 @@
      width: 100px;
      font-weight: 700;
      border-radius: 20px;
-     color: #000000;
+     color: #d3f712;
      border-color: #ff2f00;
      background-color: #ff2f00;
      cursor: pointer;
@@ -54,9 +55,9 @@
 
    .signUp-bottom button:hover{
      transform: scale(1.15);
-     color: #ff2f00;
-     background-color: #000000;
-     border-color: #000000;
+     color: #000000;
+     background-color: #d3f712;
+     border-color: #d3f712;
    }
 
    .signUp-bottom label{

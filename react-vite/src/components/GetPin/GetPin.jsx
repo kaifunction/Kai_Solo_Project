@@ -12,7 +12,6 @@ import DeletePin from "../DeletePin/DeletePin";
 import PinModal from "./PinModal";
 import { useModal } from "../../context/Modal";
 import DeleteComment from "../DeleteComment/DeleteComment";
-import {IoIosArrowForward} from 'react-icons/io'
 import { FaChevronLeft } from 'react-icons/fa'
 import "./GetPin.css";
 
@@ -160,7 +159,7 @@ const GetPin = () => {
         {shouldDisplayButtons && (
           <div style={{display:'flex', gap:'20px', height: '40px', alignItems: 'center'}}>
             <h4 className="getPin-text-h4"> Manage Pin:</h4>
-            <button onClick={toEditPage}  className="getPin-edit-delete-button">Edit</button>
+            <button onClick={toEditPage}  className="getPin-edit-delete-button" style={{border:'2px soild #ff2f00', borderRadius:'15px', padding:'6px 10px'}}>Edit</button>
             <button  className="getPin-edit-delete-button" style={{width:'10px', height:'40px', backgroundColor:'white', border:'none'}}>
               <OpenModalMenuItem
                 itemText="Delete"
@@ -180,7 +179,7 @@ const GetPin = () => {
               maxLength="255"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              style={{ width: "500px", height: "100px", color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px' }}
+              style={{ width: "500px", height: "100px", color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px', borderRadius:'15px' }}
             />
             {errors &&
                 errors.map((error, i) => <p key={i} style={{margin:'0', fontSize:'12px', color:'#ff00bb'}}>
@@ -227,7 +226,7 @@ const GetPin = () => {
                 </p>
                 <div>
                   {managementButton && comment.user?.id === currentUserId && (
-                    <div className="getPin-edit-delete-comment">
+                    <div className="getPin-edit-delete-comment" style={{gap:'20px'}}>
                       <button onClick={backToPin} className="getPin-edit-delete-button getPin-back"> <FaChevronLeft /> </button>
 
                       <button onClick={() => handleEditButtonClick(comment)} className="getPin-edit-delete-button getPin-edit">
@@ -256,7 +255,7 @@ const GetPin = () => {
           {pinComments.length === 0 && (<p>Add Some Comments...</p>)}
         </div>
       </div>
-      <div>
+      {/* <div>
           <IoIosArrowForward className='nav-bar-arrow8'/>
           <IoIosArrowForward className='nav-bar-arrow7'/>
           <IoIosArrowForward className='nav-bar-arrow'/>
@@ -265,7 +264,7 @@ const GetPin = () => {
           <IoIosArrowForward className='nav-bar-arrow4'/>
           <IoIosArrowForward className='nav-bar-arrow5'/>
           <IoIosArrowForward className='nav-bar-arrow6'/>
-        </div>
+        </div> */}
     </div>
   );
 };

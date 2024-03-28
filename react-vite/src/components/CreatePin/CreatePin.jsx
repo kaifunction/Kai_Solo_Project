@@ -7,6 +7,7 @@ import { useModal } from "../../context/Modal";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import  SignupFormModal  from "../SignupFormModal";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import {IoIosArrowForward} from 'react-icons/io'
 import "./CreatePin.css";
 
 function CreatePin() {
@@ -192,7 +193,7 @@ function CreatePin() {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                style={{width:'400px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px'}}
+                style={{width:'400px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px', borderRadius:'15px'}}
               />
               {validation.title && <p style={{
                     marginTop: "10px",
@@ -207,7 +208,7 @@ function CreatePin() {
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                style={{width:'400px', height: '100px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb20', padding:'10px'}}
+                style={{width:'400px', height: '100px', color:'#000000', backgroundColor:'#d3f71220', borderColor: '#ff00bb30', padding:'10px', borderRadius:'15px'}}
               />
               {validation.description && <p style={{
                     marginTop: "10px",
@@ -297,6 +298,16 @@ function CreatePin() {
     </div>
 
     }
+    <div>
+          <IoIosArrowForward className='nav-bar-arrow8'/>
+          <IoIosArrowForward className='nav-bar-arrow7'/>
+          <IoIosArrowForward className='nav-bar-arrow'/>
+          <IoIosArrowForward className='nav-bar-arrow2'/>
+          <IoIosArrowForward className='nav-bar-arrow3'/>
+          <IoIosArrowForward className='nav-bar-arrow4'/>
+          <IoIosArrowForward className='nav-bar-arrow5'/>
+          <IoIosArrowForward className='nav-bar-arrow6'/>
+        </div>
     </div>
   );
 }
