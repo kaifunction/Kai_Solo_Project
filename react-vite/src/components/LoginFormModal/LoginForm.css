@@ -5,6 +5,7 @@
      align-items: center;
      padding: 40px 140px;
      gap: 20px;
+     border-radius: 20px;
      background-color: #ff2f0020;
      background: linear-gradient(to bottom, #ff2f0020, #ffffff);
 }
