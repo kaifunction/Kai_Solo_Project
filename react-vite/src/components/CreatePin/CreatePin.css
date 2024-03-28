@@ -76,6 +76,17 @@
      width: 100%;
      margin-bottom: 20px;
 }
+/* .upload-form_container-upload-custom-button{
+     gap: 10px;
+     background-color: #d3f71220;
+     border:2px solid #ff2f0020;
+     border-radius: 20px;
+     padding: 23px;
+     color: #ff2f00;
+     font-weight: 700;
+     width: 100%;
+     margin-bottom: 20px;
+} */
 
 
 .createPin-right label{
@@ -83,3 +94,7 @@
      flex-direction: column;
      gap: 20px;
 }
+
+/* .upload-form_container-upload-button{
+     display: none;
+ } */

@@ -151,21 +151,31 @@ function CreatePin() {
           <h1>Create a new Pin</h1>
         </div>
           <div className="create-pin-upload-pinLink">
-            <img
+            {pinLink ? <img
               src={pinLink}
-              alt="Drop you file here..."
+              alt="&nbsp;&nbsp; Please drop you file here..."
               style={{ width: "300px", height: "400px", color:'#ff00bb' }}
               className="createPin-image"
-            />
+            /> :
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center', marginBottom:'10px'}}>
+              <img src={'../../public/image-icon.png'} style={{width:'30px'}}/>
+              <snap style={{color:'#ff00bb'}}>&nbsp;&nbsp; Please drop you file here...</snap>
+
+            </div>
+            }
             {file == "No Image" && (
-              <input
-                type="file"
-                accept="image/*"
-                name="pin_link"
-                onChange={onImageChange}
-                className="createPin-choose-file"
-                style={{width:'400px', height:'305px'}}
-                />
+              <div>
+                {/* <label for="file-upload" className="upload-form_container-upload-custom-button">Upload image(s)</label> */}
+                <input
+                  // id="file-upload"
+                  type="file"
+                  accept="image/*"
+                  name="pin_link"
+                  onChange={onImageChange}
+                  className="createPin-choose-file"
+                  style={{width:'400px', height:'305px'}}
+                  />
+              </div>
             )}
             {validation.file && <p>{validation.file}</p>}
           </div>
