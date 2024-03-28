@@ -41,10 +41,11 @@
 
 .login-button1{
      padding: 5px;
-     width: 100px;
+     width: 80px;
+     font-size: 14px;
      font-weight: 700;
      border-radius: 20px;
-     color: #000000;
+     color: #d3f712;
      border-color: #ff2f00;
      background-color: #ff2f00;
      cursor: pointer;
@@ -53,9 +54,9 @@
 
 .login-button1:hover{
      transform: scale(1.15);
-     color: #ff2f00;
-     background-color: #000000;
-     border-color: #000000;
+     color: #000000;
+     background-color: #d3f712;
+     border-color: #00000050;
    }
 
 
@@ -91,7 +92,7 @@
    }
 
    .login-input{
-          width: 250px;
+          width: 290px;
           height: 30px;
           color: #000000;
           background-color: #d3f71220;

@@ -2,7 +2,11 @@
   position: absolute;
   right: 40px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  padding-top: 20px;
+  align-items: center;
+  /* background-color: #000000;
+  background: linear-gradient(to bottom, #000000, #00000010); */
 }
 
 
@@ -194,11 +198,11 @@ nav {
   padding: 5px 10px;
   width:max-content;
   height:min-content;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
-  border-radius: 10px;
+  border-radius: 20px;
   color: #d3f712;
-  border-color: #ff2f00;
+  border: 2px solid #00000040;
   background-color: #ff2f00;
   pointer-events: all;
   cursor: pointer;
@@ -209,7 +213,7 @@ nav {
   transform: scale(1.15);
   color: #000000;
   background-color: #d3f712;
-  border-color: #d3f712;
+  border: 2px solid #00000050;
 }
 
 

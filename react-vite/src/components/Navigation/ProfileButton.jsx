@@ -56,13 +56,13 @@ function ProfileButton() {
       {showMenu && (
         <ul
           className={"profile-dropdown"}
-          style={{ paddingTop: "20px" }}
+          style={{ paddingTop: "20px", background: 'linear-gradient(to bottom, #000000, #00000000)', display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center', gap:'10px' }}
           ref={ulRef}
         >
           {user ? (
             <>
               <h3 style={{ color: "#ff2f00" }}>{user.username}</h3>
-              <h3 style={{ color: "#ff2f00", paddingBottom: "10px" }}>
+              <h3 style={{ color: "#ff2f00"}}>
                 {user.email}
               </h3>
 
@@ -70,10 +70,10 @@ function ProfileButton() {
                 to={`/current-user`}
                 style={{ textDecoration: "none", color: "#d3f712" }}
               >
-                <button>User Profile</button>
+                <button style={{margin:'10px 5px'}}>User Profile</button>
               </NavLink>
 
-              <button onClick={logout} style={{ pointerEvents: "all" }}>
+              <button onClick={logout} style={{ pointerEvents: "all", margin:'10px 5px' }}>
                 Log Out
               </button>
             </>
