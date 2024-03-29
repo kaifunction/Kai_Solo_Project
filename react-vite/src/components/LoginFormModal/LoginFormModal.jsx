@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { thunkLogin } from "../../redux/session";
+import { thunkLogin, thunkLogout } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
