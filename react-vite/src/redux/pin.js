@@ -9,6 +9,9 @@ const POST_COMMENT = 'pins/POST_COMMENT';
 const EDIT_COMMENT = 'pins/EDIT_COMMENT';
 const DELETE_COMMENT = 'pins/DELETE_COMMENT';
 
+const POST_BOARD_PINS = 'pins/POST_BOARD_PINS';
+const DELETE_BOARD_PINS = 'pins/DELETE_BOARD_PINS';
+
 
 // Action Creators
 const getPin = (pin) => ({
@@ -50,6 +53,16 @@ export const editComment = (comment) => ({
 const deleteComment = (commentId) => ({
      type: DELETE_COMMENT,
      payload: commentId
+})
+
+
+const postBoardPins = (pin) => ({
+     type: POST_BOARD_PINS,
+     payload: pin
+})
+
+const deleteBoardPins = () => ({
+     type: DELETE_BOARD_PINS,
 })
 
 
@@ -220,7 +233,24 @@ export const thunkDeleteComment = (pinId, commentId) => async (dispatch) => {
 }
 
 
-const initialState = { pins: {} }
+// post a BoardPins
+export const thunkPostBoardPins = (pin) => async (dispatch) => {
+     pin = await dispatch(thunkPostPin(pin));
+
+     dispatch(postBoardPins(pin));
+     return pin;
+}
+
+
+// delete a BoardPins
+export const thunkDeleteBoardPins = () => async (dispatch) => {
+     dispatch(deleteBoardPins());
+}
+
+
+
+
+const initialState = { pins: {}, postedBoardPins: {} }
 
 const pinReducer = (state=initialState, action) => {
      let newState;
@@ -271,6 +301,16 @@ const pinReducer = (state=initialState, action) => {
                newState = { ...state };
                delete newState.pins[action.payload];
                return newState
+
+          case POST_BOARD_PINS:
+               newState = { ...state };
+               newState.postedBoardPins[action.payload.id] = action.payload;
+               return newState;
+
+          case DELETE_BOARD_PINS:
+               newState = { ...state };
+               newState.postedBoardPins = {};
+               return newState;
 
           default:
                return state;

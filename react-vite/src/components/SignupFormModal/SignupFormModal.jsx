@@ -18,6 +18,8 @@ function SignupFormModal() {
   const [showPassword, setShowPassword] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
+  const ulRef = useRef();
+
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
     setShowMenu(!showMenu);
