@@ -8,6 +8,8 @@ import EditPin from '../components/EditPin/EditPin';
 import Layout from './Layout';
 import HomePage from '../components/HomePage/HomePage';
 import UserProfile from '../components/UserProfile';
+import GetAllBoards from '../components/GetAllBoards';
+import GetOneBoard from '../components/GetOneBoard';
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +47,14 @@ export const router = createBrowserRouter([
         path: "current-user",
         element: <UserProfile />,
       },
+      {
+        path: "boards",
+        element: <GetAllBoards />
+      },
+      {
+        path: "boards/:boardId",
+        element: <GetOneBoard />
+      }
     ],
   },
 ]);

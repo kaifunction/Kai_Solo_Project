@@ -12,6 +12,7 @@ board_routes = Blueprint('boards', __name__)
 @board_routes.route('/')
 def all_board():
      boards = Board.query.all()
+     # print('BOARDS:================> ', boards)
      return {
           'boards': [board.toDictLimited() for board in boards]
      }

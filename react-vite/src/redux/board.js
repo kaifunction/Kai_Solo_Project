@@ -48,22 +48,24 @@ export const deleteBoard = (boardId) => ({
 // Get a Board Thunk
 export const thunkGetBoard = (boardId) => async (dispatch) => {
      if (!boardId) return;
-     const res = await fetch(`/api/boards/${boardId}/`);
+     const res = await fetch(`/api/board/${boardId}/`);
 
      if (res.ok) {
           const { board } = await res.json();
-          dispatch(getBoards(board));
+          dispatch(getBoard(board));
           return board;
      }
 
      const data = await res.json();
      if(data.errors) return data;
-};
+}
 
 
 // Get all Boards Thunk
 export const thunkGetBoards = () => async (dispatch) => {
-     const res = await fetch('/api/boards/');
+     const res = await fetch('/api/board/');
+
+     // console.log("resFROMTHUNK===>", res)
 
      if (res.ok) {
           const { boards } = await res.json();
@@ -82,7 +84,7 @@ export const thunkAddBoard = (board) => async (dispatch) => {
      for (let key of Object.keys(board))
           formData.append(key, board[key]);
 
-     const res = await fetch('/api/boards/', {
+     const res = await fetch('/api/board/', {
           method: 'POST',
           body: formData
      });
@@ -102,7 +104,7 @@ export const thunkAddBoard = (board) => async (dispatch) => {
 
 // Edit a Board Thunk
 export const thunkUpdateBoard = (board) => async (dispatch) => {
-     const res = await fetch(`/api/boards/${board.id}/`, {
+     const res = await fetch(`/api/board/${board.id}/`, {
           method: 'POST',
           headers: {
                'Content-Type': 'application/json'
@@ -123,7 +125,7 @@ export const thunkUpdateBoard = (board) => async (dispatch) => {
 
 // Delete a Board Thunk
 export const thunkDeleteBoard = (boardId) => async (dispatch) => {
-     const res = await fetch(`/api/boards/${boardId}/`, {
+     const res = await fetch(`/api/board/${boardId}/`, {
           method: 'DELETE'
      });
 

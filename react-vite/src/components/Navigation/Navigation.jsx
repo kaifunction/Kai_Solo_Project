@@ -35,13 +35,18 @@ function Navigation() {
                 Home
               </NavLink>
 
-              <div
-                className="nav-bar-button"
-                onClick={() => window.alert("Feature coming soon")}
-                style={{ cursor: "pointer" }}
+              <NavLink
+                to="/boards"
+                style={{ textDecoration: "none" }}
               >
-                Boards
-              </div>
+                <div
+                  className="nav-bar-button"
+                  // onClick={() => window.alert("Feature coming soon")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Boards
+                </div>
+              </NavLink>
 
               <NavLink
                 to="/pin-creation-tool"
