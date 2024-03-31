@@ -32,17 +32,23 @@ const GetAllBoards = () => {
           <h1 className="loading-spinner">Loading...</h1>
         </div>
       ) : (
-        <div
-          className="allBoards-container"
-        >
+          <div>
+               <NavLink to="/board-creation-tool">
+               <button className="createPin-button" style={{width:'150px', margin:'140px 40px 0px 40px'}}>Create a Board</button>
+               </NavLink>
+
+           <div
+           className="allBoards-container"
+           >
           {allBoardsArray.map((board) => (
-            <div key={board.id} className="board-card">
+               <div key={board.id} className="board-card">
                <NavLink to={`/boards/${board.id}`}>
                 <img src={board.board_pic} alt={board.title} />
               <div className="boardTitle">{board.title} Boards</div>
               </NavLink>
             </div>
           ))}
+          </div>
         </div>
       )}
     </>

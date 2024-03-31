@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 from flask_login import login_required, current_user
 from app.models import db, Board, User, Pin
 from app.forms import BoardForm
@@ -28,7 +28,7 @@ def get_board(id):
 
 
 # POST a new board
-@board_routes.route('/', methods=['POST'])
+@board_routes.route('/board-creation-tool/', methods=['POST'])
 @login_required
 def create_board():
      user = User.query.get(current_user.id)
@@ -36,23 +36,38 @@ def create_board():
      form = BoardForm()
      form['csrf_token'].data = request.cookies['csrf_token']
      if form.validate_on_submit():
-          pinStr = form.data['pins']
-          pins = []
-          for pinId in pinStr.split(','):
-               pins.append(Pin.query.get(pinId))
+          # pinStr = form.data['pins']
+          # pins = []
+          # for pinId in pinStr.split(','):
+          #      pins.append(Pin.query.get(pinId))
 
-          board = Board(
+          # board = Board(
+          #      title=form.data['title'],
+          #      board_pic=form.data['board_pic'],
+          #      description=form.data['description'],
+          #      user=user,
+          #      # pins=pins,
+          #      # created_at=dt.now(),
+          #      # updated_at=dt.now()
+          # )
+          board_pic = form.data['board_pic']
+          board_pic.filename = get_unique_filename(board_pic.filename)
+          upload = upload_file_to_s3(board_pic)
+
+          if 'url' not in upload:
+               return render_template('error.html', message='Failed to upload image to S3')
+          url = ''
+          if upload:
+               url = upload['url']
+          new_board = Board(
                title=form.data['title'],
-               board_pic=form.data['board_pic'],
+               board_pic=url,
                description=form.data['description'],
-               user=user,
-               pins=pins,
-               # created_at=dt.now(),
-               # updated_at=dt.now()
+               user=user
           )
-          db.session.add(board)
+          db.session.add(new_board)
           db.session.commit()
-          return { 'board': board.to_dict() }, 200
+          return { 'board': new_board.to_dict() }, 200
      return {'errors': form.errors}, 401
 
 
