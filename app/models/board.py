@@ -15,8 +15,8 @@ class Board(db.Model):
      description = db.Column(db.Text)
      user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
      pin_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('pins.id')))
-     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
-     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
+     created_at = db.Column(db.DateTime, default=datetime.utcnow())
+     updated_at = db.Column(db.DateTime, default=datetime.utcnow())
 
 
      def to_dict(self):

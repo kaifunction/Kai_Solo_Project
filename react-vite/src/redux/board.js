@@ -84,14 +84,14 @@ export const thunkAddBoard = (board) => async (dispatch) => {
      for (let key of Object.keys(board))
           formData.append(key, board[key]);
 
-     const res = await fetch('/api/board/', {
+     const res = await fetch('/api/board/board-creation-tool/', {
           method: 'POST',
           body: formData
      });
 
      if (res.ok) {
           const { board } = await res.json();
-          dispatch(thunkDeleteBoardPins())
+          // dispatch(thunkDeleteBoardPins())
           dispatch(addBoard(board));
           return board;
      }

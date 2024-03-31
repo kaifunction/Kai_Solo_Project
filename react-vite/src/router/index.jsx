@@ -10,6 +10,7 @@ import HomePage from '../components/HomePage/HomePage';
 import UserProfile from '../components/UserProfile';
 import GetAllBoards from '../components/GetAllBoards';
 import GetOneBoard from '../components/GetOneBoard';
+import CreateBoard from '../components/CreateBoard';
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "boards/:boardId",
         element: <GetOneBoard />
+      },
+      {
+        path: "board-creation-tool",
+        element: <CreateBoard />
       }
     ],
   },
