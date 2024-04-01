@@ -120,7 +120,7 @@ function EditBoard() {
               )}
               {validation.file && <p>{validation.file}</p>}
             </div>
-            <div className="edit-pin-data">
+            <div className="edit-board-data">
               {errors.errors &&
                 errors.errors.map((error, i) => (
                   <div

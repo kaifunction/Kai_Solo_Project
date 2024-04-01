@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink, useNavigate } from "react-router-dom";
 import { thunkGetBoard } from "../../redux/board";
 import CreatePin from "../CreatePin/CreatePin";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import DeleteBoard from "../DeleteBoard/DeleteBoard";
 import "./GetOneBoard.css";
 
 const GetOneBoard = () => {
@@ -46,6 +48,13 @@ const GetOneBoard = () => {
       </button>
       {showCreatePin && <CreatePin />}
      <button onClick={toEditPage}  className="getPin-edit-delete-button" style={{border:'2px soild #ff2f00', borderRadius:'15px', padding:'6px 10px'}}>Edit</button>
+
+     <button  className="getPin-edit-delete-button" style={{width:'10px', height:'40px', backgroundColor:'white', border:'none'}}>
+              <OpenModalMenuItem
+                itemText="Delete"
+                modalComponent={<DeleteBoard />}
+              />
+            </button>
 
 
       <div className="allPins-container">
