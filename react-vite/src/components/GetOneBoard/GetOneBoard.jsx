@@ -5,6 +5,7 @@ import { thunkGetBoard } from "../../redux/board";
 import CreatePin from "../CreatePin/CreatePin";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import DeleteBoard from "../DeleteBoard/DeleteBoard";
+import { FaChevronLeft } from "react-icons/fa";
 import "./GetOneBoard.css";
 
 const GetOneBoard = () => {
@@ -31,13 +32,23 @@ const GetOneBoard = () => {
      navigate(`/boards/${boardId}/edit`);
    }
 
+   function backToBoards(e) {
+     e.preventDefault();
+     navigate(`/boards`);
+   }
+
   return (
     <div className="board_page-containers">
+
       <h1 style={{ padding: "140px 0px 0px 80px" }}>{board?.title} Board</h1>
       <div className="board_page-text" style={{ padding: "0px 0px 0px 80px" }}>
             <h4>Description: {board?.description}</h4>
      </div>
-      {/* <button onClick={() => navigate(-1)} className="back-button">Back</button> */}
+      <button onClick={backToBoards} className="editBoard-button" style={{margin:'0 20px 0 80px'}}>
+               <FaChevronLeft />
+     </button>
+     {currentUser?.id === board?.user.id && (
+        <div>
       <button
         onClick={handleOpenCreatePin}
         className="createPin-button"
@@ -55,6 +66,9 @@ const GetOneBoard = () => {
                 modalComponent={<DeleteBoard />}
               />
             </button>
+
+        </div>
+      )}
 
 
       <div className="allPins-container">
