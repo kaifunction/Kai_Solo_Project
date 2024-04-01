@@ -11,11 +11,11 @@ function EditBoard() {
   const { boardId } = useParams();
   const navigate = useNavigate();
   const board = useSelector((state) => state.boards[boardId]);
-  console.log("BOARD===>", board.board_pic);
+//   console.log("BOARD===>", board.board_pic);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [boardPic, setBoardLink] = useState("No Image");
+  const [boardPic, setBoardPic] = useState("No Image");
   const [file, setFile] = useState("");
   const [errors, setErrors] = useState("");
   const [validation, setValidation] = useState({});
@@ -24,7 +24,7 @@ function EditBoard() {
   function onImageChange(e) {
     if (e.target.files && e.target.files[0]) {
       setFile(URL.createObjectURL(e.target.files[0]));
-      setBoardLink(e.target.files[0]);
+      setBoardPic(e.target.files[0]);
     }
   }
 
@@ -89,7 +89,7 @@ function EditBoard() {
      e.preventDefault();
      setTitle(board.title);
      setDescription(board.description);
-     setBoardLink("No Image");
+     setBoardPic("No Image");
      setFile(board.board_pic);
    }
 
@@ -103,7 +103,7 @@ function EditBoard() {
           <div>
             <h1>UPDATE A NEW BOARD</h1>
           </div>
-          <div className="edit-board-upload-boardLink">
+          <div className="edit-board-upload-boardPic">
               <img
                 src={file}
                 alt="Board Image Here"
@@ -115,12 +115,12 @@ function EditBoard() {
                   accept="image/*"
                   name="board_pic"
                   onChange={onImageChange}
-                  className="editBorad-choose-file"
+                  className="editBoard-choose-file"
                 />
               )}
               {validation.file && <p>{validation.file}</p>}
             </div>
-            <div className="edit-board-data">
+            <div className="edit-pin-data">
               {errors.errors &&
                 errors.errors.map((error, i) => (
                   <div

@@ -10,26 +10,26 @@
 }
 
 
-.board-pin-right{
+.edit-board-right{
      display: flex;
      flex-direction: column;
      gap: 90px;
      margin-top: 90px;
 }
 
-.board-pin-label{
+.edit-board-label{
      display: flex;
      flex-direction: column;
      margin-top: 20px;
 }
 
-.board-pin-input{
+.edit-board-input{
      display: flex;
      flex-direction: column;
      gap: 20px;
 }
 
-.board-text-h4{
+.edit-text-h4{
      margin: 0;
      background-color: #d3f71290;
      width: 40%;
