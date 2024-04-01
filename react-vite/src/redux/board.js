@@ -8,6 +8,7 @@ const GET_BOARD = 'boards/GET_BOARD';
 const GET_BOARDS = 'boards/GET_BOARDS';
 const ADD_BOARD = 'boards/ADD_BOARD';
 const DELETE_BOARD = 'boards/DELETE_BOARD';
+const EDIT_BOARD = 'boards/EDIT_BOARD';
 
 
 // Custom Selectors
@@ -35,6 +36,11 @@ export const getBoards = (boards) => ({
 
 export const addBoard = (board) => ({
      type: ADD_BOARD,
+     payload: board
+});
+
+const editBoard = (board) => ({
+     type: EDIT_BOARD,
      payload: board
 });
 
@@ -104,21 +110,31 @@ export const thunkAddBoard = (board) => async (dispatch) => {
 
 // Edit a Board Thunk
 export const thunkUpdateBoard = (board) => async (dispatch) => {
-     const res = await fetch(`/api/board/${board.id}/`, {
+     const { boardId, title, description, board_pic } = board;
+
+     const formData = new FormData();
+     formData.append('title', board['title']);
+     formData.append('description', board['description']);
+     formData.append('board_pic', board['board_pic']);
+
+
+     const res = await fetch(`/api/board/${boardId}/edit/`, {
           method: 'POST',
-          headers: {
-               'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(board)
+          body: formData
      });
 
+     console.log("res FROM THUNK===>", res)
+
      if (res.ok) {
-          const { board } = await res.json();
-          dispatch(addBoard(board));
-          return board;
+          const edit_board = await res.json();
+          dispatch(editBoard(board));
+          return edit_board;
+     }else {
+          const data = await res.json();
+          if(data.errors){
+               return data
+          }
      }
-     const data = await res.json();
-     if(data.errors) return data;
 
 }
 
@@ -159,6 +175,12 @@ const boardsReducer = (state = initialState, action) => {
                newState = { ...state };
                newState[action.payload.id] = action.payload;
                return newState;
+
+          case EDIT_BOARD:
+               return {
+                    ...state,
+                    board: action.payload
+               }
 
           case DELETE_BOARD:
                newState = { ...state };

@@ -31,7 +31,6 @@ def get_board(id):
 @board_routes.route('/board-creation-tool/', methods=['POST'])
 @login_required
 def create_board():
-     user = User.query.get(current_user.id)
 
      form = BoardForm()
      form['csrf_token'].data = request.cookies['csrf_token']
@@ -60,10 +59,10 @@ def create_board():
           if upload:
                url = upload['url']
           new_board = Board(
+               user=current_user,
                title=form.data['title'],
                board_pic=url,
-               description=form.data['description'],
-               user=user
+               description=form.data['description']
           )
           db.session.add(new_board)
           db.session.commit()
@@ -72,29 +71,40 @@ def create_board():
 
 
 # Edit a board
-@board_routes.route('/<int:id>/', methods=['POST'])
+@board_routes.route('/<int:id>/edit/', methods=['POST'])
 @login_required
 def edit_board(id):
-     user = User.query.get(current_user.id)
+     # user = User.query.get(current_user.id)
      board = Board.query.get(id)
 
-     if user.id != board.user.id:
-          return { 'message': 'Forbidden.' }, 403
+     # if user.id != board.user.id:
+     #      return { 'message': 'Forbidden.' }, 403
+     if not board:
+          return { 'message': 'Board not found.' }, 404
 
 
-     form = BoardForm()
-     form['csrf_token'].data = request.cookies['csrf_token']
-     if form.validate_on_submit():
-          board.title = form.data['title'] or board.title
-          board.board_pic=form.data['board_pic'] or board.board_pic
-          board.description = form.data['description'] or board.description
-          board.user = user
-          board.pins = board.pins
+     updated_board = BoardForm()
+     updated_board['csrf_token'].data = request.cookies['csrf_token']
+     #=======> <========#
+     print('updated pin is: ', updated_board)
+     if updated_board.validate_on_submit():
+          board_pic = updated_board.data['board_pic']
+          board_pic.filename = get_unique_filename(board_pic.filename)
+          upload = upload_file_to_s3(board_pic)
 
-          db.session.add(board)
+          if 'url' not in upload:
+               return render_template('error.html', message='Failed to upload image to S3')
+          url = ''
+          if upload:
+               url = upload['url']
+
+          board.title = updated_board.data['title']
+          board.board_pic = url
+          board.description = updated_board.data['description']
+
           db.session.commit()
           return { 'board': board.to_dict() }, 200
-     return {'errors': form.errors}, 401
+     return {'errors': updated_board.errors}, 401
 
 
 

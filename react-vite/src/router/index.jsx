@@ -11,6 +11,7 @@ import UserProfile from '../components/UserProfile';
 import GetAllBoards from '../components/GetAllBoards';
 import GetOneBoard from '../components/GetOneBoard';
 import CreateBoard from '../components/CreateBoard';
+import EditBoard from '../components/EditBoard';
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: "board-creation-tool",
         element: <CreateBoard />
+      },
+      {
+        path: "boards/:boardId/edit",
+        element: <EditBoard />
       }
     ],
   },

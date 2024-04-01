@@ -44,7 +44,7 @@ const GetAllBoards = () => {
                <div key={board.id} className="board-card">
                <NavLink to={`/boards/${board.id}`}>
                 <img src={board.board_pic} alt={board.title} />
-              <div className="boardTitle">{board.title} Boards</div>
+              <div className="boardTitle">{board.title} Board</div>
               </NavLink>
             </div>
           ))}
