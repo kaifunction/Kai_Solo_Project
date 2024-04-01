@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, ValidationError
 from datetime import datetime as dt
+from ..s3_helpers import ALLOWED_EXTENSIONS
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 
 
 # def is_before_today(_form, field):
@@ -12,8 +14,8 @@ from datetime import datetime as dt
 
 
 class BoardForm(FlaskForm):
-     title = StringField('title', validators=[DataRequired()])
-     board_pic = StringField('board_pic')
+     title = StringField('title', validators=[DataRequired(message='Title is required')])
+     board_pic = FileField('board_pic', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
      description = StringField('description')
      pins = StringField('pins')
     #  created_at = StringField('created_at', validators=[is_before_today])
