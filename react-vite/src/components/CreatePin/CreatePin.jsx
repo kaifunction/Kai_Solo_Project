@@ -298,7 +298,7 @@ function CreatePin() {
     </div>
 
     }
-    <div>
+    {/* <div>
           <IoIosArrowForward className='nav-bar-arrow8'/>
           <IoIosArrowForward className='nav-bar-arrow7'/>
           <IoIosArrowForward className='nav-bar-arrow'/>
@@ -307,7 +307,7 @@ function CreatePin() {
           <IoIosArrowForward className='nav-bar-arrow4'/>
           <IoIosArrowForward className='nav-bar-arrow5'/>
           <IoIosArrowForward className='nav-bar-arrow6'/>
-        </div>
+        </div> */}
     </div>
   );
 }

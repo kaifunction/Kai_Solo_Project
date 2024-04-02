@@ -77,7 +77,7 @@ function EditBoard() {
       return;
     }
 
-    await navigate(`/boards/${boardId}`);
+    await navigate(`/boards`);
    }
 
    function backToBoard(e) {

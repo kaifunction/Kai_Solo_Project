@@ -10,3 +10,26 @@
      cursor: pointer;
      transition: transform 0.3s ease-in-out;
 }
+
+
+.allPinsBoard-container {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: flex-start;
+     padding-top: 40px;
+     margin-left: 40px;
+     gap: 50px;
+ }
+
+ .allPinsBoard-pins{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: flex-start;
+     padding-top: 40px;
+     margin-left: 40px;
+     gap: 50px;
+ }
+
+ .allPinsBoard-BoardPic{
+     width: 100%;
+ }
