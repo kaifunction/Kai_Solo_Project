@@ -9,6 +9,7 @@ const GET_BOARDS = 'boards/GET_BOARDS';
 const ADD_BOARD = 'boards/ADD_BOARD';
 const DELETE_BOARD = 'boards/DELETE_BOARD';
 const EDIT_BOARD = 'boards/EDIT_BOARD';
+// const ADD_PIN = 'boards/ADD_PIN';
 
 
 // Custom Selectors
@@ -48,6 +49,11 @@ export const deleteBoard = (boardId) => ({
      type: DELETE_BOARD,
      payload: boardId
 });
+
+// export const addPin = (pin) => ({
+//      type: ADD_PIN,
+//      payload: pin
+// });
 
 
 // Thunks
@@ -186,6 +192,8 @@ const boardsReducer = (state = initialState, action) => {
                newState = { ...state };
                delete newState[action.payload];
                return newState;
+
+
 
           default:
                return state;

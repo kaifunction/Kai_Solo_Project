@@ -166,7 +166,7 @@ export const thunkDeletePin = (pinId) => async (dispatch) => {
 
 // Post a Comment
 export const thunkPostComment = (pinId, comment) => async (dispatch) => {
-     console.log('COMMENT FROM THUNK====>', comment)
+     // console.log('COMMENT FROM THUNK====>', comment)
      const response = await fetch(`/api/pin/${pinId}/comments/`, {
           method: 'POST',
           headers: {"Content-Type": "application/json"},
@@ -176,7 +176,7 @@ export const thunkPostComment = (pinId, comment) => async (dispatch) => {
 
      if (response.ok) {
           const post_comment = await response.json()
-          console.log('POST COMMENT FROM THUNK===>', post_comment)
+          // console.log('POST COMMENT FROM THUNK===>', post_comment)
           dispatch(postComment(post_comment))
           return post_comment
      } else {
@@ -236,8 +236,10 @@ export const thunkDeleteComment = (pinId, commentId) => async (dispatch) => {
 // post a BoardPins
 export const thunkPostBoardPins = (pin) => async (dispatch) => {
      pin = await dispatch(thunkPostPin(pin));
+     console.log("PIN FROM THUNK===>", pin)
 
      dispatch(postBoardPins(pin));
+     console.log("PIN FROM THUNK after postBoardPins===>", pin)
      return pin;
 }
 
@@ -303,9 +305,10 @@ const pinReducer = (state=initialState, action) => {
                return newState
 
           case POST_BOARD_PINS:
-               newState = { ...state };
-               newState.postedBoardPins[action.payload.id] = action.payload;
-               return newState;
+               return {
+                    ...state,
+                    postedBoardPins: { ...state.postedBoardPins, [action.payload.id]: action.payload }
+                  };
 
           case DELETE_BOARD_PINS:
                newState = { ...state };
