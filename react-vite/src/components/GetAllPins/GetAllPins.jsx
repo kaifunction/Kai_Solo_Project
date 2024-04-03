@@ -47,7 +47,7 @@ const GetAllPins = () => {
      };
    }, []);
 
-   const filteredPins = allPinsArray.filter((pin) => pin.boards.length > 0);
+  //  const filteredPins = allPinsArray.filter((pin) => pin.boards.length > 0);
 
   return (
      <>
@@ -65,7 +65,7 @@ const GetAllPins = () => {
                 Back to Top
               </button>
             )}
-            {filteredPins.map((pin) => (
+            {allPinsArray.map((pin) => (
               <div key={pin.id} className="allPins-eachpin">
                 <NavLink key={pin.id} to={`/pin/${pin.id}/`}>
                   <img
