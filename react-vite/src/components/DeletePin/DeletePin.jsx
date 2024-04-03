@@ -10,7 +10,7 @@ const DeletePin = () => {
   const navigate = useNavigate();
   const { pinId } = useParams();
 
-  console.log("pinId FROM DELETE PAGE===>", pinId);
+  // console.log("pinId FROM DELETE PAGE===>", pinId);
 
   const deletePin = async (e) => {
     e.preventDefault();

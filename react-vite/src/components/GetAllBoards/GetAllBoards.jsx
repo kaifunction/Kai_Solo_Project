@@ -10,7 +10,7 @@ const GetAllBoards = () => {
   const allBoardsArray = Object.values(allBoards);
   const [isLoading, setIsLoading] = useState(true);
   // console.log("allBoards===>", Object.values(allBoards))
-  console.log("allBoardsArray===>", allBoardsArray);
+  // console.log("allBoardsArray===>", allBoardsArray);
 
   useEffect(() => {
     dispatch(thunkGetBoards());

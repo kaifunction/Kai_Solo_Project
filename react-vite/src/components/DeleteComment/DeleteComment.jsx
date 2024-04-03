@@ -9,7 +9,7 @@ const DeleteComment = ({ commentId }) => {
   const dispatch = useDispatch();
   const { pinId } = useParams();
 
-  console.log("COMMENTID FROM DELETE=====>", commentId);
+  // console.log("COMMENTID FROM DELETE=====>", commentId);
 
   const handleDeleteButtonClick = async (e) => {
     e.preventDefault();

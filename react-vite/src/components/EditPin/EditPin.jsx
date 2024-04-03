@@ -84,7 +84,7 @@ function EditPin() {
         pin_link: pinLink,
       })
     );
-    console.log("response FROM EDIT PAGE===>", response);
+    // console.log("response FROM EDIT PAGE===>", response);
     if (response.errors) {
       setErrors({ errors: Object.values(response.errors) });
       setDisabled(false);

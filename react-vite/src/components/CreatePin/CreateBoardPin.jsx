@@ -132,7 +132,7 @@ function CreateBoardPin( props ) {
        props.onClose();
        }
      }
-     console.log("responseFROMCREATEPIN====>", response)
+    //  console.log("responseFROMCREATEPIN====>", response)
      // console.log("pinID====>", response.id)
      const newPinId = response.id;
      // if (newPinId !== null) {
