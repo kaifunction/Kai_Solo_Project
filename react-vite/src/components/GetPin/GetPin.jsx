@@ -36,7 +36,7 @@ const GetPin = () => {
   }, [dispatch, pinId]);
 
   const pin = useSelector((state) => state.pins.pins[pinId]);
-  if (!pin) return null;
+  if (!pin) return <h1 style={{position: 'absolute', top:'200px', left:'80px', color:'#ff2f00'}}>No Data Abailable!</h1>;
   const userId = pin.user?.id;
   const currentUserId = currentUser?.id;
   const pinImage = pin.pin_link;
