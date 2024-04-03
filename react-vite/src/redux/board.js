@@ -10,6 +10,7 @@ const ADD_BOARD = 'boards/ADD_BOARD';
 const DELETE_BOARD = 'boards/DELETE_BOARD';
 const EDIT_BOARD = 'boards/EDIT_BOARD';
 // const ADD_PIN = 'boards/ADD_PIN';
+const POST_BOARD_PINS = 'boards/POST_BOARD_PINS';
 
 
 // Custom Selectors
@@ -49,6 +50,11 @@ export const deleteBoard = (boardId) => ({
      type: DELETE_BOARD,
      payload: boardId
 });
+
+const postBoardPins = (pin) => ({
+     type: POST_BOARD_PINS,
+     payload: pin
+})
 
 // export const addPin = (pin) => ({
 //      type: ADD_PIN,
@@ -129,7 +135,7 @@ export const thunkUpdateBoard = (board) => async (dispatch) => {
           body: formData
      });
 
-     console.log("res FROM THUNK===>", res)
+     // console.log("res FROM THUNK===>", res)
 
      if (res.ok) {
           const edit_board = await res.json();
@@ -163,8 +169,43 @@ export const thunkDeleteBoard = (boardId) => async (dispatch) => {
 }
 
 
+// Post a Pin to a Board Thunk
+export const thunkPostBoardPins = (boardId, pin) => async (dispatch) => {
+     // console.log('PIN FROM THUNKPOSTBOARDPINS=====>', pin['pin_link'])
+     //正确✅
+
+     const data = new FormData();
+     data.append('pin_link', pin['pin_link'])
+     data.append('title', pin['title'])
+     data.append('description', pin['description'])
+
+     // console.log('DATA FROM THUNKPOSTBOARDPINS=====>', data)
+//      const entries = data.entries();
+//     for (const entry of entries) {
+//         console.log('DATAentry FROM THUNKPOSTBOARDPINS=====>', entry);
+//     }
+
+     const response = await fetch(`/api/board/${boardId}/add-pin/`, {
+          method: 'POST',
+          body: data
+     });
+
+     // console.log("response FROM POST BOARD PINS===>", response)
+
+     if (response.ok) {
+          const post_pin = await response.json();
+          dispatch(postBoardPins(post_pin));
+          return post_pin;
+     } else {
+          const data = await response.json();
+          if(data.errors) return data;
+     }
+
+}
+
 // Reducer
-const initialState = {};
+const initialState = { boards: {}, postedBoardPins: {} };
+
 const boardsReducer = (state = initialState, action) => {
      let newState;
      switch (action.type) {
@@ -191,6 +232,13 @@ const boardsReducer = (state = initialState, action) => {
           case DELETE_BOARD:
                newState = { ...state };
                delete newState[action.payload];
+               return newState;
+
+          case POST_BOARD_PINS:
+               newState = { ...state };
+               newState.postedBoardPins = newState.postedBoardPins || {}; // 检查并初始化
+               const { id, ...pinData } = action.payload; // 假设action.payload包含id和其他pin数据
+               newState.postedBoardPins[id] = pinData;
                return newState;
 
 

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink, useNavigate } from "react-router-dom";
-import { thunkGetBoard } from "../../redux/board";
+import { thunkGetBoard, getBoard } from "../../redux/board";
 import CreateBoardPin from "../CreatePin/CreateBoardPin";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import DeleteBoard from "../DeleteBoard/DeleteBoard";
+import { thunkPostBoardPins } from "../../redux/board";
 // import { addPin } from "../../redux/board";
 import { FaChevronLeft } from "react-icons/fa";
 import "./GetOneBoard.css";
@@ -19,21 +20,26 @@ const GetOneBoard = () => {
   // const board = useSelector((state) => state.boards[boardId]);
   const allPins = useSelector((state) => state.pins.postedBoardPins);
   const [board, setBoard] = useState(useSelector((state) => state.boards[boardId]));
-  console.log("allPinsFROMGETONEBOARD===>", allPins);
+  // console.log("allPinsFROMGETONEBOARD===>", allPins);
   const allPinsArray = Object.values(allPins);
   // useEffect(() => {
   //   setNewPin(allPins);
   // }, [allPins]);
 
   const pins = board?.pins;
-  console.log("board===>", board);
-  console.log("pins===>", pins);
+  // console.log("board===>", board);
+  // console.log("pins===>", pins);
 
   useEffect(() => {
     dispatch(thunkGetBoard(boardId)).then((boardData) => {
       setBoard(boardData);
     });
-  }, [boardId]);
+  }, [boardId, dispatch]);
+  useEffect(() => {
+    // 这里不需要调用 thunkGetBoard，因为在创建新的 Pin 后已经更新了板块信息
+    // setBoard(boardData); // 不需要再次设置 board，因为 Redux store 中的数据已经更新
+}, [board, allPins.length]); // 添加依赖数组 board，当 board 变化时重新触发 useEffect
+
 
   const handleOpenCreatePin = () => {
     setShowCreatePin(true);
@@ -43,22 +49,17 @@ const GetOneBoard = () => {
     setShowCreatePin(false);
   };
 
-  const handlePinCreated = (pin) => {
-    console.log("New Pin created===>", pin.id);
-    const updatedPins = [...pins, pin];
-    const updatedBoard = { ...board, pins: updatedPins };
-    setBoard(updatedBoard);
-    // const updatedPins = [...pins, pin];
-    // setNewPin([...updatedPins]);
-    // if(pin){
-    //   dispatch(addPin(pin));
-    // }
+  const handlePinCreated = async (pin) => {
+    // console.log("New Pin created===>", pin);
+
+
+    const createPin = await dispatch(thunkPostBoardPins(boardId, pin));
+    // console.log("New Pin created AFTER===>", createPin);
+
+    dispatch(getBoard(createPin));
+    navigate(`/pin/${pin.id}`);
+
   };
-  // if(allPins !== undefined && allPins !== null){
-  // console.log("newPinsFROMGETONEBOARD===>", Object.values(allPins.pins));
-  // pins?.push(Object.values(allPins.pins));
-  // // [...pins, Object.values(allPins.pins)]
-  // }
 
   function toEditPage(e) {
     e.preventDefault();

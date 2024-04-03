@@ -115,7 +115,7 @@ const CreateBoard = () => {
     };
 
     const response = await dispatch(thunkAddBoard(payload));
-    console.log("response===>", response);
+    // console.log("response===>", response);
 
     if (response.errors) {
       setErrors({ errors: Object.values(response.errors) });

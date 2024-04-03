@@ -131,7 +131,7 @@ export const thunkEditPin = (pin) => async (dispatch) => {
           method: 'POST',
           body: formData
      })
-     console.log("response FROM EDIT THUNK", response)
+     // console.log("response FROM EDIT THUNK", response)
 
      if (response.ok){
           const edit_pin = await response.json()
@@ -201,7 +201,7 @@ export const thunkEditComment = (pinId, comment) => async (dispatch) => {
      if(response.ok) {
           const edit_comment = await response.json()
           dispatch(editComment(edit_comment))
-          console.log("EDIT_COMMENT FROM THUNK====>", edit_comment)
+          // console.log("EDIT_COMMENT FROM THUNK====>", edit_comment)
           return edit_comment
      } else {
           const data = await response.json();
@@ -213,16 +213,16 @@ export const thunkEditComment = (pinId, comment) => async (dispatch) => {
 
 // Delete a comment
 export const thunkDeleteComment = (pinId, commentId) => async (dispatch) => {
-     console.log('PINID, COMMENTId FROM THUNK===>', pinId, commentId)
+     // console.log('PINID, COMMENTId FROM THUNK===>', pinId, commentId)
      const response = await fetch(`/api/pin/${pinId}/comments/${commentId}/`, {
           method: 'DELETE'
      })
-     console.log('RESPONSE FROM DELETE THUNK====>', response)
+     // console.log('RESPONSE FROM DELETE THUNK====>', response)
 
      if (response.ok){
           const delete_comment = await response.json()
           dispatch(deleteComment(delete_comment))
-          console.log("DELETE_COMMENT FROM THUNK====>", delete_comment)
+          // console.log("DELETE_COMMENT FROM THUNK====>", delete_comment)
           // return delete_comment;
      } else {
           const data = await response.json();
@@ -236,10 +236,10 @@ export const thunkDeleteComment = (pinId, commentId) => async (dispatch) => {
 // post a BoardPins
 export const thunkPostBoardPins = (pin) => async (dispatch) => {
      pin = await dispatch(thunkPostPin(pin));
-     console.log("PIN FROM THUNK===>", pin)
+     // console.log("PIN FROM THUNK===>", pin)
 
      dispatch(postBoardPins(pin));
-     console.log("PIN FROM THUNK after postBoardPins===>", pin)
+     // console.log("PIN FROM THUNK after postBoardPins===>", pin)
      return pin;
 }
 

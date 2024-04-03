@@ -6,9 +6,9 @@ import "./Navigation.css";
 
 function Navigation() {
   const pinReducerState = useSelector((state) => state.pins);
-  console.log("pinREDUCERSTATE==========>", pinReducerState);
+  // console.log("pinREDUCERSTATE==========>", pinReducerState);
   const userReducerState = useSelector((state) => state.session.user);
-  console.log("userReducerState==========>", userReducerState);
+  // console.log("userReducerState==========>", userReducerState);
 
   //确保userReducerState存在
 
