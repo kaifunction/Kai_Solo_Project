@@ -64,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path: "boards/:boardId/edit",
         element: <EditBoard />
+      },
+      {
+        path: "*",
+        element: <h1 style={{margin:'240px, 40px', zIndex:'1000', position: 'absolute', top:'200px', left:'80px', color:'#ff2f00'}}>404 Not Found</h1>,
       }
     ],
   },

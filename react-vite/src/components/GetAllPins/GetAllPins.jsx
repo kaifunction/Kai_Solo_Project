@@ -11,7 +11,7 @@ const GetAllPins = () => {
   const allPinsArray = Object.values(allPins);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  // console.log("allPinsArray===>", allPinsArray)
+  console.log("allPinsArray===>", allPinsArray)
 
   useEffect(() => {
     dispatch(thunkGetPins());
@@ -49,6 +49,19 @@ const GetAllPins = () => {
 
   //  const filteredPins = allPinsArray.filter((pin) => pin.boards.length > 0);
 
+  const uniquePins = allPinsArray.reduce((acc, pin) => {
+    const existingPin = acc.find((item) => item.pin_link === pin.pin_link);
+    if (!existingPin) {
+      acc.push(pin);
+    } else if (existingPin.boards.length === 0) {
+      // 如果已存在且boards为空，则不添加当前pin
+    } else if (pin.boards.length > 0) {
+      // 如果已存在但boards不为空，则用当前pin替换已存在的pin
+      acc[acc.indexOf(existingPin)] = pin;
+    }
+    return acc;
+  }, []);
+
   return (
      <>
           {isLoading ? (
@@ -65,7 +78,7 @@ const GetAllPins = () => {
                 Back to Top
               </button>
             )}
-            {allPinsArray.map((pin) => (
+            {uniquePins.map((pin) => (
               <div key={pin.id} className="allPins-eachpin">
                 <NavLink key={pin.id} to={`/pin/${pin.id}/`}>
                   <img
