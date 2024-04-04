@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkDeleteBoard } from "../../redux/board";
+import { thunkDeleteBoardPins } from "../../redux/pin";
 import "./DeleteBoard.css";
 
 
@@ -14,6 +15,7 @@ const DeleteBoard = () => {
      const deleteBoard = async (e) => {
           e.preventDefault();
           await dispatch(thunkDeleteBoard(boardId));
+          await dispatch(thunkDeleteBoardPins());
           await navigate("/boards");
           closeModal();
         };
@@ -28,7 +30,7 @@ const DeleteBoard = () => {
                <div className="delete-container">
                     <div className="delete-text">
                          <h1>Confirm Delete</h1>
-                         <h3>Are you sure you want to delete this Board?(All The pins are also be deleted.)</h3>
+                         <h3>Are you sure you want to delete this Board?(The newly created pin is also accessible on the Home page.)</h3>
                     </div>
                     <div className="delete-button">
                          <button onClick={deleteBoard}>Yes (Delete Board)</button>

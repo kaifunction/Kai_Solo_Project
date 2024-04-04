@@ -11,7 +11,7 @@ const GetAllPins = () => {
   const allPinsArray = Object.values(allPins);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  console.log("allPinsArray===>", allPinsArray)
+  // console.log("allPinsArray===>", allPinsArray)
 
   useEffect(() => {
     dispatch(thunkGetPins());
