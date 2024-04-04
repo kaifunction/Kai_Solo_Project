@@ -312,6 +312,11 @@ const pinReducer = (state=initialState, action) => {
 
           case DELETE_BOARD_PINS:
                newState = { ...state };
+               const postedBoardPinsIds = Object.keys(newState.postedBoardPins);
+               postedBoardPinsIds.forEach((pinId) => {
+                    delete newState.pins[pinId];
+               });
+
                newState.postedBoardPins = {};
                return newState;
 
