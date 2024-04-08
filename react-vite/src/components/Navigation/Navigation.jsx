@@ -21,14 +21,14 @@ function Navigation() {
 
   const handleSearch = async () => {
     try {
-      console.log("searchTerm", searchTerm);
+      // console.log("searchTerm", searchTerm);
       if (searchTerm.trim() === "") {
         // 如果搜索栏被清空，显示所有 uniquePins
         setSearchResults({}); // 清空搜索结果
       } else {
         const response = await fetch(`/api/pin/search?query=${searchTerm}`);
         const data = await response.json();
-        console.log("data", data);
+        // console.log("data", data);
         setSearchResults(data);
       };
 
