@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ModalProvider, Modal } from "../context/Modal";
 import { thunkAuthenticate } from "../redux/session";
+import { SearchResultsProvider } from "../context/SearchContext";
 import Navigation from "../components/Navigation/Navigation";
 
 export default function Layout() {
@@ -15,11 +16,13 @@ export default function Layout() {
   return (
     <>
       <ModalProvider>
+        <SearchResultsProvider>
         <Navigation />
         <div className="page-container">
           {isLoaded && <Outlet />}
         </div>
         <Modal />
+        </SearchResultsProvider>
       </ModalProvider>
     </>
   );

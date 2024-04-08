@@ -222,3 +222,17 @@ def delete_pin_comment(_id, c_id):
      db.session.delete(comment)
      db.session.commit()
      return {'message': 'Deleted successful'}
+
+
+
+
+@pin_routes.route('/search', methods=['GET'])
+def search_pins():
+     query = request.args.get('query')
+     print('QUERY=======>', query)
+     if not query:
+          return {'errors': 'No search query provided'}, 400
+
+     pins = Pin.query.filter(Pin.title.ilike(f'%{query}%')).all()
+
+     return {pin.id:pin.pin_dict() for pin in pins}
