@@ -15,7 +15,7 @@ const GetAllPins = () => {
   // console.log("allPinsArray===>", allPinsArray)
   const { searchResults } = useSearchResults();
   const searchResultsArray = Object.values(searchResults);
-  console.log("searchResultsFROMGETALLPINS====>", searchResults);
+  // console.log("searchResultsFROMGETALLPINS====>", searchResults);
 
   useEffect(() => {
     dispatch(thunkGetPins());
