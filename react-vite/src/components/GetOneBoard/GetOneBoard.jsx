@@ -28,7 +28,7 @@ const GetOneBoard = () => {
 
   const pins = board?.pins;
 
-  if (!board) return <h1 style={{position: 'absolute', top:'200px', left:'80px', color:'#ff2f00'}}>No Data Abailable!</h1>;
+  // if (!board) return <h1 style={{position: 'absolute', top:'200px', left:'80px', color:'#ff2f00'}}>No Data Abailable!</h1>;
   // console.log("board===>", board);
   // console.log("pins===>", pins);
 
