@@ -236,3 +236,21 @@ def search_pins():
      pins = Pin.query.filter(Pin.title.ilike(f'%{query}%')).all()
 
      return {pin.id:pin.pin_dict() for pin in pins}
+
+
+# Add a like to a pin
+@pin_routes.route('/<int:id>/like/', methods=['POST', 'DELETE'])
+@login_required
+def add_like(id):
+     found = False
+     pin = Pin.query.get(id)
+     for user in pin.likes:
+          if user.id == current_user.id:
+               pin.likes.remove(user)
+               found = True
+               break
+     if not found:
+          pin.likes.append(current_user)
+     db.session.add(pin)
+     db.session.commit()
+     return {"message": "deleted like" if found else "added like"}, 202 if found else 200
