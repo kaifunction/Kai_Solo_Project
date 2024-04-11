@@ -86,3 +86,10 @@ class User(db.Model, UserMixin):
         back_populates="user",
         cascade="all, delete"
     )
+
+
+    user_liked_pins = db.relationship(
+        "Pin",
+        secondary="pin_likes",
+        back_populates="likes"
+    )

@@ -33,6 +33,7 @@ class Pin(db.Model):
                'user': self.user.public_user_dict(),
                'user_id': self.user_id,
                'pin_link': self.pin_link,
+               'likes': len(self.likes),
          }
 
 
@@ -46,13 +47,20 @@ class Pin(db.Model):
                'created_at': self.created_at,
                'user': self.user.public_user_dict(),
                'comments': [comment.comment_dict() for comment in self.comments],
-               'boards':[board.board_dict() for board in self.boards]
+               'boards':[board.board_dict() for board in self.boards],
+               'likes': len(self.likes),
           }
 
      boards = db.relationship(
           'Board',
           secondary='board_pins',
           back_populates='pins'
+     )
+
+     likes = db.relationship(
+          'User',
+          secondary='pin_likes',
+          back_populates='user_liked_pins'
      )
 
 
