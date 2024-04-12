@@ -12,6 +12,9 @@ const DELETE_COMMENT = 'pins/DELETE_COMMENT';
 const POST_BOARD_PINS = 'pins/POST_BOARD_PINS';
 const DELETE_BOARD_PINS = 'pins/DELETE_BOARD_PINS';
 
+const ADD_LIKE = 'pins/ADD_LIKE';
+const DELETE_LIKE = 'pins/DELETE_LIKE';
+
 
 // Action Creators
 const getPin = (pin) => ({
@@ -63,6 +66,16 @@ const postBoardPins = (pin) => ({
 
 const deleteBoardPins = () => ({
      type: DELETE_BOARD_PINS,
+})
+
+const addLike = (pinId, current_user, pin) => ({
+     type: ADD_LIKE,
+     payload: {pinId, current_user, pin}
+})
+
+const deleteLike = (pinId, current_user) => ({
+     type: DELETE_LIKE,
+     payload: {pinId, current_user}
 })
 
 
@@ -250,6 +263,23 @@ export const thunkDeleteBoardPins = () => async (dispatch) => {
 }
 
 
+// add a like
+export const thunkAddLike = (pinId, current_user) => async (dispatch) => {
+     const response = await fetch(`/api/pin/${pinId}/like/`, {
+          method: 'POST',
+     })
+
+     const pin = await response.json();
+     if(pin.message === 'added like'){
+          dispatch(addLike(pinId, current_user, pin))
+          return 1
+     } else if (pin.message === 'deleted like'){
+          dispatch(deleteLike(pinId, current_user))
+          return -1
+     }
+     return 0
+}
+
 
 
 const initialState = { pins: {}, postedBoardPins: {} }
@@ -318,6 +348,11 @@ const pinReducer = (state=initialState, action) => {
                });
 
                newState.postedBoardPins = {};
+               return newState;
+
+          case ADD_LIKE:
+               newState = { ...state };
+               newState.pins = {...state.pins, [action.payload.id]: action.payload}
                return newState;
 
           default:
