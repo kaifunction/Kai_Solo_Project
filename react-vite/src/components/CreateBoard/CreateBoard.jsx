@@ -205,7 +205,7 @@ const CreateBoard = () => {
           </div>
 
           <div className="createBoard-right">
-            <label>
+            <label style={{display:'flex', flexDirection:'column', gap:'20px'}}>
               <h4 className="createBoard-text-h4">Title:</h4>
               <input
                 type="text"
@@ -233,7 +233,7 @@ const CreateBoard = () => {
               )}
             </label>
 
-            <label>
+            <label style={{display:'flex', flexDirection:'column', gap:'20px'}}>
               <h4 className="createBoard-text-h4">Description:</h4>
               <textarea
                 value={description}

@@ -38,3 +38,18 @@
      border-bottom-left-radius: 20px;
      border-top-right-radius: 20px;
 }
+
+
+.createBoard-choose-file{
+     display: flex;
+     flex-direction: row;
+     gap: 10px;
+     background-color: #d3f71220;
+     border:2px solid #ff2f0020;
+     border-radius: 20px;
+     padding: 23px;
+     color: #ff2f00;
+     font-weight: 700;
+     width: 100%;
+     margin-bottom: 20px;
+}
