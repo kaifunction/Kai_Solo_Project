@@ -94,7 +94,7 @@ function Navigation() {
               onClick={handleSearch} // 点击搜索按钮触发搜索功能
               style={{ padding: "0", marginLeft: "10px" }}
             >
-              SEARCH
+              Search
             </button>
           </div>
         </div>
