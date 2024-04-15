@@ -7,6 +7,7 @@ import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import  SignupFormModal  from "../SignupFormModal";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import "./UserProfile.css";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -126,16 +127,20 @@ const UserProfile = () => {
         <>
           {isLoading ? (
             <h1 className="loading-spinner">Loading...</h1>
-          ) : (
-            <div className="allPins-container">
+            ) : (
+              <div className="allPins-container">
               {showScrollButton && (
                 <button
-                  className="scrollToTopButton"
-                  onClick={handleScrollToTop}
+                className="scrollToTopButton"
+                onClick={handleScrollToTop}
                 >
                   Back to Top
                 </button>
               )}
+              <div className="allPins-title">
+                <h1>Welcome, {user.username}!</h1>
+                <h2>Your Pins</h2>
+              </div>
               {currentUserPins.map((pin) => (
                 <div key={pin.id} className="allPins-eachpin">
                   <NavLink key={pin.id} to={`/pin/${pin.id}/`}>
