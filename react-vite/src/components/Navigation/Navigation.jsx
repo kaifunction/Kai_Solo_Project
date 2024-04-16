@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import { IoIosArrowForward } from "react-icons/io";
+// import { IoIosArrowForward } from "react-icons/io";
 import { useSearchResults } from "../../context/SearchContext";
 // import GetAllPins from "../GetAllPins/GetAllPins";
 import "./Navigation.css";
@@ -12,9 +12,9 @@ function Navigation() {
   const { searchResults, setSearchResults } = useSearchResults();
   // const [searchResults, setSearchResults] = useState([]);
 
-  const pinReducerState = useSelector((state) => state.pins);
+  // const pinReducerState = useSelector((state) => state.pins);
   // console.log("pinREDUCERSTATE==========>", pinReducerState);
-  const userReducerState = useSelector((state) => state.session.user);
+  // const userReducerState = useSelector((state) => state.session.user);
   // console.log("userReducerState==========>", userReducerState);
 
   //确保userReducerState存在
@@ -30,7 +30,7 @@ function Navigation() {
         const data = await response.json();
         // console.log("data", data);
         setSearchResults(data);
-      };
+      }
 
     } catch (error) {
       console.error("Error fetching search results:", error);

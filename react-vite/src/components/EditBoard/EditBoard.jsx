@@ -199,6 +199,6 @@ function EditBoard() {
           </div>
      </form>
   );
-};
+}
 
 export default EditBoard;

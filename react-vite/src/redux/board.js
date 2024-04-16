@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { normalizeObj } from './helper';
-import { thunkGetPins, thunkDeleteBoardPins } from './pin';
+import { thunkGetPins } from './pin';
 
 
 // Action Types
@@ -122,7 +122,7 @@ export const thunkAddBoard = (board) => async (dispatch) => {
 
 // Edit a Board Thunk
 export const thunkUpdateBoard = (board) => async (dispatch) => {
-     const { boardId, title, description, board_pic } = board;
+     const { boardId } = board;
 
      const formData = new FormData();
      formData.append('title', board['title']);
@@ -237,7 +237,7 @@ const boardsReducer = (state = initialState, action) => {
           case POST_BOARD_PINS:
                newState = { ...state };
                newState.postedBoardPins = newState.postedBoardPins || {}; // 检查并初始化
-               const { id, ...pinData } = action.payload; // 假设action.payload包含id和其他pin数据
+               const { id, ...pinData } = action.payload;
                newState.postedBoardPins[id] = pinData;
                return newState;
 

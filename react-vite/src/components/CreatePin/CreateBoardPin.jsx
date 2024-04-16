@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { thunkPostPin, thunkPostBoardPins } from "../../redux/pin";
+import { thunkPostBoardPins } from "../../redux/pin";
 import { thunkLogin } from "../../redux/session";
 import { useModal } from "../../context/Modal";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import  SignupFormModal  from "../SignupFormModal";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import {IoIosArrowForward} from 'react-icons/io'
+// import {IoIosArrowForward} from 'react-icons/io'
 import "./CreatePin.css";
 
 
@@ -22,7 +22,7 @@ function CreateBoardPin( props ) {
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
      const [showPassword, setShowPassword] = useState(false);
-     const [showCreatePin, setShowCreatePin] = useState(true);
+    //  const [showCreatePin, setShowCreatePin] = useState(true);
      const { closeModal } = useModal();
      // const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -134,7 +134,7 @@ function CreateBoardPin( props ) {
      }
     //  console.log("responseFROMCREATEPIN====>", response)
      // console.log("pinID====>", response.id)
-     const newPinId = response.id;
+    //  const newPinId = response.id;
      // if (newPinId !== null) {
      await navigate(`/boards/${props.boardId}`);
      // }

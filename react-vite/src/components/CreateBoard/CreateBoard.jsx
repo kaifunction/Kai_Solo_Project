@@ -146,13 +146,13 @@ const CreateBoard = () => {
           <div className="createBoard-left">
             <div>
               <h1>Create a new Board</h1>
-              <h2>Let's create your Board Cover!</h2>
+              <h2>Let&apos;s create your Board Cover!</h2>
             </div>
             <div className="create-board-upload-boardpic">
               {boardLink ? (
                 <img
                   src={boardLink}
-                  alt="&nbsp;&nbsp; Please drop you file here..."
+                  alt="Please drop you file here..."
                   style={{ width: "300px", height: "400px", color: "#ff00bb" }}
                   className="createBoard-image"
                 />
@@ -171,8 +171,8 @@ const CreateBoard = () => {
                     }
                     style={{ width: "30px" }}
                   />
-                  <span style={{ color: "#ff00bb" }}>
-                    &nbsp;&nbsp; Please drop you file here...
+                  <span style={{ color: "#ff00bb", marginLeft:'15px'}}>
+                     Please drop you file here...
                   </span>
                 </div>
               )}
