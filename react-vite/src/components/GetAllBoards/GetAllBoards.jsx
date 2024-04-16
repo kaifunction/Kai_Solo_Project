@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { thunkGetBoards, selectBoards } from "../../redux/board";
+import { thunkGetBoards } from "../../redux/board";
 import { useDispatch, useSelector } from "react-redux";
 import "./GetAllBoards.css";
 import { NavLink } from "react-router-dom";

@@ -7,7 +7,7 @@ import { useModal } from "../../context/Modal";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import  SignupFormModal  from "../SignupFormModal";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import {IoIosArrowForward} from 'react-icons/io'
+// import {IoIosArrowForward} from 'react-icons/io'
 import "./CreatePin.css";
 
 function CreatePin() {

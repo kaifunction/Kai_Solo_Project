@@ -15,13 +15,13 @@ const GetOneBoard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showCreatePin, setShowCreatePin] = useState(false);
-  const [newPin, setNewPin] = useState({});
+  // const [newPin, setNewPin] = useState({});
   const currentUser = useSelector((state) => state.session.user);
   // const board = useSelector((state) => state.boards[boardId]);
   const allPins = useSelector((state) => state.pins.postedBoardPins);
   const [board, setBoard] = useState(useSelector((state) => state.boards[boardId]));
   // console.log("allPinsFROMGETONEBOARD===>", allPins);
-  const allPinsArray = Object.values(allPins);
+  // const allPinsArray = Object.values(allPins);
   // useEffect(() => {
   //   setNewPin(allPins);
   // }, [allPins]);

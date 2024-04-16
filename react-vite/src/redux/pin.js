@@ -133,7 +133,7 @@ export const thunkPostPin = (pin) => async (dispatch) => {
 
 // Edit a pin
 export const thunkEditPin = (pin) => async (dispatch) => {
-     const { pinId, title, description, pin_link } = pin
+     const { pinId } = pin
      // console.log("PINID FROM THUNK", pinId)
      const formData = new FormData();
      formData.append('pin_link', pin['pin_link'])
