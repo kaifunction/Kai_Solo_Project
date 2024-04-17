@@ -33,3 +33,13 @@
  .allPinsBoard-BoardPic{
      width: 100%;
  }
+
+ .allpins{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        /* padding-top: 40px; */
+        /* margin-left: 40px; */
+        gap: 40px;
+ }

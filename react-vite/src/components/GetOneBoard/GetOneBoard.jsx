@@ -132,14 +132,16 @@ const GetOneBoard = () => {
         </div>
         <div className="allPinsBoard-pins">
           <h3 style={{marginRight:'228px'}}>All Pins</h3>
-          {pins?.map((pin) => (
-            <div key={pin.id} className="allPins-eachpin">
-              <NavLink to={`/pin/${pin.id}`}>
-                <img src={pin.pin_link} alt={pin.title} />
-              </NavLink>
-              <div className="pinTitle">{pin.title}</div>
-            </div>
-          ))}
+          <div className="allpins">
+            {pins?.map((pin) => (
+              <div key={pin.id} className="allPins-eachpin">
+                <NavLink to={`/pin/${pin.id}`}>
+                  <img src={pin.pin_link} alt={pin.title} />
+                </NavLink>
+                <div className="pinTitle">{pin.title}</div>
+              </div>
+            ))}
+          </div>
 
         </div>
       </div>
