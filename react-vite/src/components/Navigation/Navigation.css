@@ -359,6 +359,7 @@ nav {
   }
 
   .nav-bar-logo-links{
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     padding: 0px 0px;
@@ -380,4 +381,65 @@ nav {
     margin-top: 10px; /* 调整上边距 */
   }
 
+  .nav-bar-search-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  /* 在此设置适用于手机屏幕的样式 */
+  .profile-dropdown {
+    padding: 5px;
+    margin-top: 20px;
+  }
+  .nav-bar {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 20px;
+  }
+  .nav-bar-left {
+    display: flex;
+    flex-direction: column;
+    width: 110%;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+  }
+  .nav-bar-left-logo {
+    padding-left: 50px;
+    width: 40px;
+    height: 35px;
+  }
+  .nav-bar-logo-links {
+    display: flex;
+    flex-direction: row;
+    padding: 0px 0px;
+    font-size: 22px;
+  }
+  .nav-bar-left-links {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  .search-bar {
+    margin: 10px 40px;
+    width: 90%;
+  }
+  .nav-bar-right {
+    margin-top: 10px;
+  }
+  .nav-bar-arrow {
+    display: none;
+  }
+  .allPins-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
 }
