@@ -130,7 +130,6 @@ const GetOneBoard = () => {
         <div className="allPinsBoard-BoardPic">
         <img src={board?.board_pic} alt={board?.title} style={{width:'300px', height:'450px', margin:'0 10px 20px 40px', borderRadius:"20px"}}/>
         </div>
-
         <div className="allPinsBoard-pins">
           <h3 style={{marginRight:'228px'}}>All Pins</h3>
           <div className="allpins">
