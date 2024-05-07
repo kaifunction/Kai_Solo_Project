@@ -335,8 +335,8 @@ const GetPin = () => {
               <div key={comment.id}>
                 <h4>• &nbsp;&nbsp;{comment.comment}</h4>
                 <p>
-                  &nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;&nbsp;---
-                  {comment.user?.username}
+                  &nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;&nbsp;---&nbsp;
+                  <strong>{comment.user?.username ? comment.user.username[0].toUpperCase() + comment.user.username.slice(1) : ''}</strong>
                 </p>
                 <div>
                   {managementButton && comment.user?.id === currentUserId && (
