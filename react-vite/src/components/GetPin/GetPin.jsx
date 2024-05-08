@@ -332,7 +332,7 @@ const GetPin = () => {
           {pin.comments
             ?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
             .map((comment) => (
-              <div key={comment.id}>
+              <div key={comment.id} style={{ color: 'black' }}>
                 <h4>• &nbsp;&nbsp;{comment.comment}</h4>
                 <p>
                   &nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;&nbsp;---&nbsp;
