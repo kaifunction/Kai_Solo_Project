@@ -7,6 +7,9 @@
   margin-left: 40px;
   gap: 50px;
 }
+/* .allPins-container::-webkit-scrollbar {
+  width: 10px;
+} */
 
 .allPins-eachpin {
   width: 300px;
